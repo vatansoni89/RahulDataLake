@@ -1,0 +1,13 @@
+﻿USE DATABASE UKPostcodes;
+USE SCHEMA PostcodeData;
+
+DROP TABLE IF EXISTS PostcodeDemographics;
+
+CREATE TABLE IF NOT EXISTS PostcodeDemographics
+(
+    Postcode string,
+    Total int,
+    Males int,
+    Females int,
+    OccupiedHouseholds int
+);

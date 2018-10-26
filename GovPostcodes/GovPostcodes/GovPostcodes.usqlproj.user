@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <StartFile>Rahul.usql</StartFile>
+    <ActiveFile>Rahul.usql</ActiveFile>
+    <BuildClusterPlanProperty>False</BuildClusterPlanProperty>
+  </PropertyGroup>
+  <ItemGroup>
+    <ScriptUserData Include="010CreateUkPostcodesDatabase.usql">
+      <UseLocalComputeAccount>false</UseLocalComputeAccount>
+      <LocalComputeAccount>DataLakeLocalCA:localcomputeaccount</LocalComputeAccount>
+      <LocalDatabase>master</LocalDatabase>
+      <LocalSchema>dbo</LocalSchema>
+      <ClusterComputeAccount>DataLakeCA:govbiv (vatansoni007@hotmail.com)</ClusterComputeAccount>
+      <ClusterDatabase>master</ClusterDatabase>
+      <ClusterSchema>dbo</ClusterSchema>
+      <RecurrenceName>010CreateUkPostcodesDatabase_ADLVSTool</RecurrenceName>
+      <RecurrenceId>8516eba3-e5b9-46b4-ad15-f3915779dca2</RecurrenceId>
+      <Parallelism>5</Parallelism>
+    </ScriptUserData>
+    <ScriptUserData Include="020 Create PostcodeData Schema.usql">
+      <UseLocalComputeAccount>false</UseLocalComputeAccount>
+      <LocalComputeAccount>DataLakeLocalCA:localcomputeaccount</LocalComputeAccount>
+      <LocalDatabase>UKPostcodes</LocalDatabase>
+      <LocalSchema>dbo</LocalSchema>
+      <ClusterComputeAccount>DataLakeCA:govbiv (vatansoni007@hotmail.com)</ClusterComputeAccount>
+      <ClusterDatabase>master</ClusterDatabase>
+      <ClusterSchema>dbo</ClusterSchema>
+      <RecurrenceName>020 Create PostcodeData Schema_ADLVSTool</RecurrenceName>
+      <RecurrenceId>4ab55fa7-376c-4b34-8f56-04a0b0708f40</RecurrenceId>
+      <Parallelism>5</Parallelism>
+    </ScriptUserData>
+    <ScriptUserData Include="030 Create Postcodes Table.usql">
+      <UseLocalComputeAccount>false</UseLocalComputeAccount>
+      <LocalComputeAccount>DataLakeLocalCA:localcomputeaccount</LocalComputeAccount>
+      <LocalDatabase>UKPostcodes</LocalDatabase>
+      <LocalSchema>dbo</LocalSchema>
+      <ClusterComputeAccount>DataLakeCA:govbiv (vatansoni007@hotmail.com)</ClusterComputeAccount>
+      <ClusterDatabase>master</ClusterDatabase>
+      <ClusterSchema>dbo</ClusterSchema>
+      <RecurrenceName>030 Create Postcodes Table_ADLVSTool</RecurrenceName>
+      <RecurrenceId>90b4498e-53bb-4e68-845f-c47a866f7ed2</RecurrenceId>
+      <Parallelism>5</Parallelism>
+    </ScriptUserData>
+    <ScriptUserData Include="040 Create Postcode demographics Table.usql">
+      <UseLocalComputeAccount>false</UseLocalComputeAccount>
+      <LocalComputeAccount>DataLakeLocalCA:localcomputeaccount</LocalComputeAccount>
+      <LocalDatabase>master</LocalDatabase>
+      <LocalSchema>dbo</LocalSchema>
+      <ClusterComputeAccount>DataLakeCA:govbiv (vatansoni007@hotmail.com)</ClusterComputeAccount>
+      <ClusterDatabase>master</ClusterDatabase>
+      <ClusterSchema>dbo</ClusterSchema>
+      <RecurrenceName>040 Create Postcode demographics Table_ADLVSTool</RecurrenceName>
+      <RecurrenceId>72c8b424-2db5-4bf4-a836-6275c69cc352</RecurrenceId>
+      <Parallelism>5</Parallelism>
+    </ScriptUserData>
+    <ScriptUserData Include="050 Create Districts Table.usql">
+      <UseLocalComputeAccount>false</UseLocalComputeAccount>
+      <LocalComputeAccount>DataLakeLocalCA:localcomputeaccount</LocalComputeAccount>
+      <LocalDatabase>master</LocalDatabase>
+      <LocalSchema>dbo</LocalSchema>
+      <ClusterComputeAccount>DataLakeCA:govbiv (vatansoni007@hotmail.com)</ClusterComputeAccount>
+      <ClusterDatabase>master</ClusterDatabase>
+      <ClusterSchema>dbo</ClusterSchema>
+      <RecurrenceName>050 Create Districts Table_ADLVSTool</RecurrenceName>
+      <RecurrenceId>157a7ab9-35c5-42c0-8409-c25c2cdc47ad</RecurrenceId>
+      <Parallelism>5</Parallelism>
+    </ScriptUserData>
+    <ScriptUserData Include="060 Populate Tables.usql">
+      <UseLocalComputeAccount>false</UseLocalComputeAccount>
+      <LocalComputeAccount>DataLakeLocalCA:localcomputeaccount</LocalComputeAccount>
+      <LocalDatabase>UKPostcodes</LocalDatabase>
+      <LocalSchema>PostcodeData</LocalSchema>
+      <ClusterComputeAccount>DataLakeCA:govbiv (vatansoni007@hotmail.com)</ClusterComputeAccount>
+      <ClusterDatabase>master</ClusterDatabase>
+      <ClusterSchema>dbo</ClusterSchema>
+      <RecurrenceName>060 Populate Tables_ADLVSTool</RecurrenceName>
+      <RecurrenceId>4c23b89f-c8d5-44be-a4bc-54181ded782c</RecurrenceId>
+      <Parallelism>5</Parallelism>
+    </ScriptUserData>
+    <ScriptUserData Include="DistrictTotalReport.usql">
+      <UseLocalComputeAccount>true</UseLocalComputeAccount>
+      <LocalComputeAccount>DataLakeLocalCA:localcomputeaccount</LocalComputeAccount>
+      <LocalDatabase>master</LocalDatabase>
+      <LocalSchema>dbo</LocalSchema>
+      <ClusterComputeAccount>DataLakeCA:govbiv (vatansoni007@hotmail.com)</ClusterComputeAccount>
+      <ClusterDatabase>master</ClusterDatabase>
+      <ClusterSchema>dbo</ClusterSchema>
+      <RecurrenceName>DistrictTotalReport_ADLVSTool</RecurrenceName>
+      <RecurrenceId>f49ba261-df96-4526-8936-00c78aa4e4a1</RecurrenceId>
+      <Parallelism>5</Parallelism>
+    </ScriptUserData>
+    <ScriptUserData Include="Rahul.usql">
+      <UseLocalComputeAccount>false</UseLocalComputeAccount>
+      <LocalComputeAccount>DataLakeLocalCA:localcomputeaccount</LocalComputeAccount>
+      <LocalDatabase>master</LocalDatabase>
+      <LocalSchema>dbo</LocalSchema>
+      <ClusterComputeAccount>DataLakeCA:govbiv (vatansoni007@hotmail.com)</ClusterComputeAccount>
+      <ClusterDatabase>UKPostcodes</ClusterDatabase>
+      <ClusterSchema>PostcodeData</ClusterSchema>
+      <RecurrenceName>Rahul_ADLVSTool</RecurrenceName>
+      <RecurrenceId>60329024-ba22-40ac-a329-591a8a48496c</RecurrenceId>
+      <Parallelism>5</Parallelism>
+    </ScriptUserData>
+    <ScriptUserData Include="Rahul1.usql">
+      <UseLocalComputeAccount>false</UseLocalComputeAccount>
+      <LocalComputeAccount>DataLakeLocalCA:localcomputeaccount</LocalComputeAccount>
+      <LocalDatabase>master</LocalDatabase>
+      <LocalSchema>dbo</LocalSchema>
+      <ClusterComputeAccount>DataLakeCA:datalakeanalyticsjob (c.raj@siemens.com)</ClusterComputeAccount>
+      <ClusterDatabase>master</ClusterDatabase>
+      <ClusterSchema>dbo</ClusterSchema>
+      <RecurrenceName>Rahul1_ADLVSTool</RecurrenceName>
+      <RecurrenceId>adf8cff1-42ae-46cd-b560-1d6839c3897a</RecurrenceId>
+      <Parallelism>5</Parallelism>
+    </ScriptUserData>
+  </ItemGroup>
+</Project>

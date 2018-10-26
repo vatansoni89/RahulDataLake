@@ -1,0 +1,62 @@
+﻿////REFERENCE ASSEMBLY UKPostcodes.[NewtonSoft.Json];
+//REFERENCE ASSEMBLY UKPostcodes.[Microsoft.Analytics.Samples.Formats];
+//
+//
+////REFERENCE SYSTEM ASSEMBLY [NewtonSoft.Json];
+////REFERENCE SYSTEM ASSEMBLY [Microsoft.Analytics.Samples.Formats];
+//
+////REFERENCE SYSTEM ASSEMBLY [System.Xml];
+////REFERENCE ASSEMBLY UKPostcodes.[Microsoft.Analytics.Samples.Formats];
+//
+//DECLARE @bigDataPath string = "/BigData/BigData.json";
+//
+//
+//adl://govbiv.azuredatalakestore.net/BigData/BigData.json
+//
+//@postcodes =
+//    EXTRACT postcode string,
+//            districtcode string,
+//            latitude string,
+//            longitude float
+//    FROM @bigDataPath
+//    USING Extractors.Csv(skipFirstNRows:1);
+
+// A. CREATE ASSEMBLY: Register assemblies (if they do not already exist).
+CREATE ASSEMBLY IF NOT EXISTS [Newtonsoft.Json] FROM @"adl://govbiv.azuredatalakestore.net/RahulAssemblies/Newtonsoft.Json.dll";
+CREATE ASSEMBLY IF NOT EXISTS [Microsoft.Analytics.Samples.Formats] FROM @"adl://govbiv.azuredatalakestore.net/RahulAssemblies/Microsoft.Analytics.Samples.Formats.dll";
+ 
+// B. REFERENCE ASSEMBLY: Load assemblies for compile time and execution.
+REFERENCE ASSEMBLY [Newtonsoft.Json];
+REFERENCE ASSEMBLY [Microsoft.Analytics.Samples.Formats];
+
+// C. USING: Specify namespace to shorten function names (e.g. Microsoft.Analytics.Samples.Formats.Json.JsonExtractor)
+USING Microsoft.Analytics.Samples.Formats.Json;
+
+// 1. Initialise variables for Input (e.g. JSON) and Output (e.g. CSV).
+DECLARE @InputFile string = @"adl://govbiv.azuredatalakestore.net/BigData/BigData.json";
+DECLARE @OutputFile string = @"adl://govbiv.azuredatalakestore.net/BigData/BigData.csv";
+
+@json =
+EXTRACT
+    country string,
+    continent string,
+    province string
+FROM
+    @InputFile
+USING new MultiLevelJsonExtractor("context.location",
+    true,
+    "country",
+    "continent",
+    "province"
+     );
+
+@countCountryBasedOnContinent =
+    SELECT COUNT(province) AS ProvinanceCount,
+           country
+    FROM @json
+    GROUP BY country;
+
+// 3. Write values to CSV
+OUTPUT @countCountryBasedOnContinent
+TO @OutputFile
+USING Outputters.Csv(outputHeader:true,quoting:true);

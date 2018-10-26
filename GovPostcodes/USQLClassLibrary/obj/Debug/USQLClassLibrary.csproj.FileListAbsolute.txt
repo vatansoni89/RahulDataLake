@@ -1,0 +1,10 @@
+C:\Users\Z003D4KS\source\repos\GovPostcodes\USQLClassLibrary\bin\Debug\USQLClassLibrary.dll
+C:\Users\Z003D4KS\source\repos\GovPostcodes\USQLClassLibrary\bin\Debug\USQLClassLibrary.pdb
+C:\Users\Z003D4KS\source\repos\GovPostcodes\USQLClassLibrary\bin\Debug\Microsoft.Analytics.Interfaces.dll
+C:\Users\Z003D4KS\source\repos\GovPostcodes\USQLClassLibrary\bin\Debug\Microsoft.Analytics.Interfaces.Streaming.dll
+C:\Users\Z003D4KS\source\repos\GovPostcodes\USQLClassLibrary\bin\Debug\Microsoft.Analytics.Types.dll
+C:\Users\Z003D4KS\source\repos\GovPostcodes\USQLClassLibrary\obj\Debug\USQLClassLibrary.csprojAssemblyReference.cache
+C:\Users\Z003D4KS\source\repos\GovPostcodes\USQLClassLibrary\obj\Debug\USQLClassLibrary.csproj.CoreCompileInputs.cache
+C:\Users\Z003D4KS\source\repos\GovPostcodes\USQLClassLibrary\obj\Debug\USQLClassLibrary.csproj.CopyComplete
+C:\Users\Z003D4KS\source\repos\GovPostcodes\USQLClassLibrary\obj\Debug\USQLClassLibrary.dll
+C:\Users\Z003D4KS\source\repos\GovPostcodes\USQLClassLibrary\obj\Debug\USQLClassLibrary.pdb

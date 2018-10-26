@@ -1,0 +1,55 @@
+﻿// A. CREATE ASSEMBLY: Register assemblies (if they do not already exist).
+CREATE ASSEMBLY IF NOT EXISTS [Newtonsoft.Json] FROM @"adl://govbiv.azuredatalakestore.net/RahulAssemblies/Newtonsoft.Json.dll";
+CREATE ASSEMBLY IF NOT EXISTS [Microsoft.Analytics.Samples.Formats] FROM @"adl://govbiv.azuredatalakestore.net/RahulAssemblies/Microsoft.Analytics.Samples.Formats.dll";
+ 
+// B. REFERENCE ASSEMBLY: Load assemblies for compile time and execution.
+REFERENCE ASSEMBLY [Newtonsoft.Json];
+REFERENCE ASSEMBLY [Microsoft.Analytics.Samples.Formats];
+
+// C. USING: Specify namespace to shorten function names (e.g. Microsoft.Analytics.Samples.Formats.Json.JsonExtractor)
+USING Microsoft.Analytics.Samples.Formats.Json;
+
+// 1. Initialise variables for Input (e.g. JSON) and Output (e.g. CSV).
+//DECLARE @InputFile string = @"adl://govbiv.azuredatalakestore.net/BigData/MultiLevelChrome.json";
+//DECLARE @InputFile string = @"adl://govbiv.azuredatalakestore.net/BigData/Size84CommaSeparated.blob";
+DECLARE @InputFile string = @"adl://govbiv.azuredatalakestore.net/BigData/BigData.json";
+
+DECLARE @countProvinceBasedOnCountryFile string = @"adl://govbiv.azuredatalakestore.net/BigData/countProvinceBasedOnCountry.csv";
+DECLARE @countryProvinceFile string = @"adl://govbiv.azuredatalakestore.net/BigData/countryProvince.csv";
+
+@json =
+EXTRACT
+    country string,
+    continent string,
+    province string
+FROM
+    @InputFile
+USING new MultiLevelJsonExtractor("context.location",
+    true,
+    "country",
+    "continent",
+    "province"
+     );
+
+@countProvinceBasedOnCountry =
+    SELECT COUNT(province) AS ProvinanceCount,
+           country ?? "UnknownCountry" AS Country, province ?? "UnknownProvince" AS Province
+    FROM @json
+    GROUP BY country, province;
+
+@countryProvince =
+    SELECT 
+           country ?? "UnknownCountry" AS Country, province ?? "UnknownProvince" AS Province
+    FROM @json
+    ;
+
+// 3. Write values to CSV
+OUTPUT @countProvinceBasedOnCountry
+TO @countProvinceBasedOnCountryFile
+USING Outputters.Csv(outputHeader:true,quoting:true);
+
+
+// 3. Write values to CSV
+OUTPUT @countryProvince
+TO @countryProvinceFile
+USING Outputters.Csv(outputHeader:true,quoting:true);
