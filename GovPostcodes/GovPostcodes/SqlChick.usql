@@ -25,21 +25,25 @@ DECLARE @sqlChickOutputFile string = @"adl://govbiv.azuredatalakestore.net/BigDa
 
 @json =
 EXTRACT
-    [location] string
+    [location] string,
+    [device] string
 FROM
     @InputFile
 USING new JsonExtractor("context");
 
 @CreateJSONTuple = 
 SELECT 
- JsonFunctions.JsonTuple([location]) AS EventData 
+ JsonFunctions.JsonTuple([location]) AS LocationData,
+ JsonFunctions.JsonTuple([device]) AS DeviceData
 FROM @json;
 
 @Dataset =
 SELECT
-EventData["country"] ?? "0" AS Country
-,EventData["province"] ?? "0" AS Province
-,EventData["city"] ?? "N/A" AS City
+LocationData["country"] ?? "NA" AS Country
+,LocationData["province"] ?? "NA" AS Province
+,LocationData["city"] ?? "N/A" AS City
+ ,DeviceData["osVersion"] ?? "N/A" AS OsVersion
+  ,DeviceData["roleName"] ?? "N/A" AS RoleName
 FROM @CreateJSONTuple;
 
 
