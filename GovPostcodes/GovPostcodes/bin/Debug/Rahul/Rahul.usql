@@ -1,4 +1,11 @@
-﻿// A. CREATE ASSEMBLY: Register assemblies (if they do not already exist).
+// Auto-generated header code
+USE DATABASE [UKPostcodes];
+USE SCHEMA [PostcodeData];
+
+// Auto-generated header code ended
+// User script
+
+// A. CREATE ASSEMBLY: Register assemblies (if they do not already exist).
 CREATE ASSEMBLY IF NOT EXISTS [Newtonsoft.Json] FROM @"adl://govbiv.azuredatalakestore.net/RahulAssemblies/Newtonsoft.Json.dll";
 CREATE ASSEMBLY IF NOT EXISTS [Microsoft.Analytics.Samples.Formats] FROM @"adl://govbiv.azuredatalakestore.net/RahulAssemblies/Microsoft.Analytics.Samples.Formats.dll";
  
@@ -56,3 +63,9 @@ USING Outputters.Csv(outputHeader:true,quoting:true);
 //OUTPUT @countryProvince
 //TO @countryProvinceFile
 //USING Outputters.Csv(outputHeader:true,quoting:true);
+
+// User script ended
+// Auto-generated footer code
+
+// Auto-generated footer code ended
+

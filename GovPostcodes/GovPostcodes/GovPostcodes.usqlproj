@@ -29,6 +29,7 @@
     <Script Include="DistrictTotalReport.usql" />
     <Script Include="Rahul.usql" />
     <Script Include="Rahul1.usql" />
+    <Script Include="SqlChick.usql" />
     <ScriptCode Include="010CreateUkPostcodesDatabase.usql.cs">
       <DependentUpon>010CreateUkPostcodesDatabase.usql</DependentUpon>
     </ScriptCode>
@@ -56,6 +57,9 @@
     <ScriptCode Include="Rahul1.usql.cs">
       <DependentUpon>Rahul1.usql</DependentUpon>
     </ScriptCode>
+    <ScriptCode Include="SqlChick.usql.cs">
+      <DependentUpon>SqlChick.usql</DependentUpon>
+    </ScriptCode>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="sourcedata" />
@@ -65,7 +69,7 @@
     <Folder Include="sourcedata\postcodeDG" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="sourcedata\Bigdata\BigData.json">
+    <Content Include="sourcedata\Bigdata\MultiLevelChrome.blob">
       <SubType>Content</SubType>
     </Content>
     <Content Include="sourcedata\districts\Districts.csv">

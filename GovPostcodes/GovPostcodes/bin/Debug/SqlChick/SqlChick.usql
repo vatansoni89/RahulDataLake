@@ -1,4 +1,11 @@
-﻿// A. CREATE ASSEMBLY: Register assemblies (if they do not already exist).
+// Auto-generated header code
+USE DATABASE [UKPostcodes];
+USE SCHEMA [PostcodeData];
+
+// Auto-generated header code ended
+// User script
+
+// A. CREATE ASSEMBLY: Register assemblies (if they do not already exist).
 CREATE ASSEMBLY IF NOT EXISTS [Newtonsoft.Json] FROM @"adl://govbiv.azuredatalakestore.net/RahulAssemblies/Newtonsoft.Json.dll";
 CREATE ASSEMBLY IF NOT EXISTS [Microsoft.Analytics.Samples.Formats] FROM @"adl://govbiv.azuredatalakestore.net/RahulAssemblies/Microsoft.Analytics.Samples.Formats.dll";
  
@@ -12,43 +19,39 @@ USING Microsoft.Analytics.Samples.Formats.Json;
 // 1. Initialise variables for Input (e.g. JSON) and Output (e.g. CSV).
 //DECLARE @InputFile string = @"adl://govbiv.azuredatalakestore.net/BigData/MultiLevelChrome.json";
 //DECLARE @InputFile string = @"adl://govbiv.azuredatalakestore.net/BigData/Size84CommaSeparated.blob";
-//DECLARE @InputFile string = @"adl://govbiv.azuredatalakestore.net/BigData/BigSize84CommaSeparated.blob";
+DECLARE @InputFile string = @"adl://govbiv.azuredatalakestore.net/BigData/BigSize84CommaSeparated.blob";
 
-DECLARE @InputFile string = @"adl://govbiv.azuredatalakestore.net/BigData/MultiLevelChrome1CountryMiss.json";
+// @InputFile string = @"adl://govbiv.azuredatalakestore.net/BigData/MultiLevelChrome1CountryMiss.json";
 
 
 //DECLARE @countProvinceBasedOnCountryFile string = @"adl://govbiv.azuredatalakestore.net/BigData/countProvinceBasedOnCountry.csv";
 //DECLARE @countryProvinceFile string = @"adl://govbiv.azuredatalakestore.net/BigData/countryProvince.csv";
 
-DECLARE @countCountryBasedOnContinentFile string = @"adl://govbiv.azuredatalakestore.net/BigData/countCountryBasedOnContinent.csv";
+DECLARE @sqlChickOutputFile string = @"adl://govbiv.azuredatalakestore.net/BigData/sqlChickOutput.csv";
 
 
 @json =
 EXTRACT
-    country string,
-    continent string
+    [location] string
 FROM
     @InputFile
-USING new MultiLevelJsonExtractor("context.location",
-    true,
-    "country",
-    "continent"
-     );
+USING new JsonExtractor("context");
 
-@countCountryBasedOnContinent =
-    SELECT country ?? "UnknownCountry" AS Country,
-           continent ?? "UnknownContinent" AS Continent
-    FROM @json;
+@CreateJSONTuple = 
+SELECT 
+ JsonFunctions.JsonTuple([location]) AS EventData 
+FROM @json;
 
-//@countryProvince =
-//    SELECT 
-//           country ?? "UnknownCountry" AS Country, province ?? "UnknownProvince" AS Province
-//    FROM @json
-//    ;
+@Dataset =
+SELECT
+EventData["country"] ?? "0" AS Country
+,EventData["province"] ?? "0" AS Province
+,EventData["city"] ?? "N/A" AS City
+FROM @CreateJSONTuple;
 
-// 3. Write values to CSV
-OUTPUT @countCountryBasedOnContinent
-TO @countCountryBasedOnContinentFile
+
+OUTPUT @Dataset
+TO @sqlChickOutputFile
 USING Outputters.Csv(outputHeader:true,quoting:true);
 
 
@@ -56,3 +59,9 @@ USING Outputters.Csv(outputHeader:true,quoting:true);
 //OUTPUT @countryProvince
 //TO @countryProvinceFile
 //USING Outputters.Csv(outputHeader:true,quoting:true);
+
+// User script ended
+// Auto-generated footer code
+
+// Auto-generated footer code ended
+
