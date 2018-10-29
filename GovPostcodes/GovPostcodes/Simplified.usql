@@ -43,7 +43,9 @@ City ?? "NA" AS Province,
 RoleName ?? "N/A" AS RoleName,
 OsVersion ?? "N/A" AS OsVersion,
 Type ?? "N/A" AS Type
-FROM @json;
+FROM @json
+WHERE Country == "India"
+         ;
 
 
 OUTPUT @Dataset
