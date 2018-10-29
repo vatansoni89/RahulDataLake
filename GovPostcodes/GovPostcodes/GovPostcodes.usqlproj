@@ -29,6 +29,7 @@
     <Script Include="DistrictTotalReport.usql" />
     <Script Include="Rahul.usql" />
     <Script Include="Rahul1.usql" />
+    <Script Include="Simplified.usql" />
     <Script Include="SqlChick.usql" />
     <ScriptCode Include="010CreateUkPostcodesDatabase.usql.cs">
       <DependentUpon>010CreateUkPostcodesDatabase.usql</DependentUpon>
@@ -56,6 +57,9 @@
     </ScriptCode>
     <ScriptCode Include="Rahul1.usql.cs">
       <DependentUpon>Rahul1.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="Simplified.usql.cs">
+      <DependentUpon>Simplified.usql</DependentUpon>
     </ScriptCode>
     <ScriptCode Include="SqlChick.usql.cs">
       <DependentUpon>SqlChick.usql</DependentUpon>

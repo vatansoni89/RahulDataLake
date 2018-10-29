@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <StartFile>SqlChick.usql</StartFile>
-    <ActiveFile>SqlChick.usql</ActiveFile>
+    <StartFile>Simplified.usql</StartFile>
+    <ActiveFile>Simplified.usql</ActiveFile>
     <BuildClusterPlanProperty>False</BuildClusterPlanProperty>
   </PropertyGroup>
   <ItemGroup>
@@ -112,6 +112,18 @@
       <ClusterSchema>dbo</ClusterSchema>
       <RecurrenceName>Rahul1_ADLVSTool</RecurrenceName>
       <RecurrenceId>adf8cff1-42ae-46cd-b560-1d6839c3897a</RecurrenceId>
+      <Parallelism>5</Parallelism>
+    </ScriptUserData>
+    <ScriptUserData Include="Simplified.usql">
+      <UseLocalComputeAccount>false</UseLocalComputeAccount>
+      <LocalComputeAccount>DataLakeLocalCA:localcomputeaccount</LocalComputeAccount>
+      <LocalDatabase>master</LocalDatabase>
+      <LocalSchema>dbo</LocalSchema>
+      <ClusterComputeAccount>DataLakeCA:govbiv (vatansoni007@hotmail.com)</ClusterComputeAccount>
+      <ClusterDatabase>UKPostcodes</ClusterDatabase>
+      <ClusterSchema>PostcodeData</ClusterSchema>
+      <RecurrenceName>Simplified_ADLVSTool</RecurrenceName>
+      <RecurrenceId>57872afe-02f4-466c-9d0e-ef2e8d0c763c</RecurrenceId>
       <Parallelism>5</Parallelism>
     </ScriptUserData>
     <ScriptUserData Include="SqlChick.usql">

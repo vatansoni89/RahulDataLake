@@ -1,0 +1,9 @@
+﻿{
+"CompilerPlanStart":"10\/27\/2018 7:54:13 PM"
+},
+{
+"Settings":"-c++ -mp -pdb Partial -OUTPUT_PATH C:\\Users\\Z003D4KS\\AppData\\Local\\USQLDataRoot -cosmosCluster localhost -apEnvironment Default -apCluster localhost -On ForceShadowCopy -On ADL -On USQL -Off SQLIPSQLProxy -Off SQLIPSQLProxyNative -SplitPartitionThreshold 52428800 -ClientVersion 10.2.2.0"
+},
+{
+"CompilerPlanEnd":"10\/27\/2018 7:54:13 PM"
+}

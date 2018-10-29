@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?><CompileResult scriptPath="D:\Vatan\Learnings\DataLake\RahulDataLake\GovPostcodes\GovPostcodes\bin\Debug\Simplified\Simplified.usql"><Error><Start>217</Start><End>291</End><Message>E_CSC_USER_CANNOTREADASSEMBLY: Assembly file 'adl://govbiv.azuredatalakestore.net/RahulAssemblies/Newtonsoft.Json.dll' could not be read.
+Description:
+The assembly file must already exist in the cluster and be accessible.
+Resolution:
+Make sure that the file denotes an existing cluster file and the file is accessible.... at token '@"adl://govbiv.azuredatalakestore.net/RahulAssemblies/Newtonsoft.Json.dll"', line 7
+near the ###:
+**************
+ code ended
+// User script
+
+// A. CREATE ASSEMBLY: Register assemblies (if they do not already exist).
+CREATE ASSEMBLY IF NOT EXISTS [Newtonsoft.Json] FROM  ### @"adl://govbiv.azuredatalakestore.net/RahulAssemblies/Newtonsoft.Json.dll";
+CREATE ASSEMBLY IF NOT EXISTS [Microsoft.Analytics.Samples.Formats] FROM @"adl://go</Message></Error></CompileResult>

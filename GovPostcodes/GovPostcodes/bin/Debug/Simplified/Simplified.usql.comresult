@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<CommonCompileResult xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <InputStreams />
+  <ScriptPath>D:\Vatan\Learnings\DataLake\RahulDataLake\GovPostcodes\GovPostcodes\bin\Debug\Simplified\Simplified.usql</ScriptPath>
+  <ScopeVertexDefinitionPath>D:\Vatan\Learnings\DataLake\RahulDataLake\GovPostcodes\GovPostcodes\bin\Debug\Simplified\ScopeVertexDef.xml</ScopeVertexDefinitionPath>
+  <AlgebraPath>D:\Vatan\Learnings\DataLake\RahulDataLake\GovPostcodes\GovPostcodes\bin\Debug\Simplified\__script__.abr</AlgebraPath>
+  <ErrorList>
+    <Error>
+      <Line>7</Line>
+      <Column>54</Column>
+      <Start>217</Start>
+      <End>291</End>
+      <Message>E_CSC_USER_CANNOTREADASSEMBLY: Assembly file 'adl://govbiv.azuredatalakestore.net/RahulAssemblies/Newtonsoft.Json.dll' could not be read.
+Description:
+The assembly file must already exist in the cluster and be accessible.
+Resolution:
+Make sure that the file denotes an existing cluster file and the file is accessible.</Message>
+      <InternalDebugInfo>E_CSC_USER_CANNOTREADASSEMBLY: Assembly file 'adl://govbiv.azuredatalakestore.net/RahulAssemblies/Newtonsoft.Json.dll' could not be read.
+Description:
+The assembly file must already exist in the cluster and be accessible.
+Resolution:
+Make sure that the file denotes an existing cluster file and the file is accessible.... at token '@"adl://govbiv.azuredatalakestore.net/RahulAssemblies/Newtonsoft.Json.dll"', line 7
+near the ###:
+**************
+ code ended
+// User script
+
+// A. CREATE ASSEMBLY: Register assemblies (if they do not already exist).
+CREATE ASSEMBLY IF NOT EXISTS [Newtonsoft.Json] FROM  ### @"adl://govbiv.azuredatalakestore.net/RahulAssemblies/Newtonsoft.Json.dll";
+CREATE ASSEMBLY IF NOT EXISTS [Microsoft.Analytics.Samples.Formats] FROM @"adl://go
+**************
+ScopeCompiler.CompilationException: E_CSC_USER_CANNOTREADASSEMBLY: Assembly file 'adl://govbiv.azuredatalakestore.net/RahulAssemblies/Newtonsoft.Json.dll' could not be read.
+Description:
+The assembly file must already exist in the cluster and be accessible.
+Resolution:
+Make sure that the file denotes an existing cluster file and the file is accessible.
+ ---&gt; System.Exception: Expecting local absolute path: adl://govbiv.azuredatalakestore.net/RahulAssemblies/Newtonsoft.Json.dll
+   at ScopeCompiler.Dependencies.Kona.Local.LocalStreamService.GetStreamMetadata(String absolutePath)
+   at ScopeCompiler.PathResolver.CheckAbsolutePath(String pathFromScript)
+   at ScopeCompiler.PathResolver.GetFullPathInner(String pathFromScript)
+   at ScopeCompiler.FrontEnd.Ddl.SqlAssemblyFilesHelper.DownloadClusterFile(String srcClusterPath, String dstLocalFile)
+   at ScopeCompiler.FrontEnd.Ddl.AssemblyFilesHelper.DownloadAssemblySource(AssemblySource source)
+   --- End of inner exception stack trace ---
+   at ScopeCompiler.FrontEnd.Ddl.AssemblyFilesHelper.DownloadAssemblySource(AssemblySource source)
+   at ScopeCompiler.FrontEnd.Ddl.SqlDdlResolver.CreateOrDeclareAssemblyInfo(Script input, DdlName ddlName, CreateOrDeclareAssemblyStatement e)
+   at ScopeCompiler.FrontEnd.Ddl.SqlDdlResolver.OnCreateAssemblyStatement(Script input, CreateAssemblyStatement e)
+   at ScopeCompiler.VisitorContext`1.Visit(T node, Action accept)
+   at ScopeCompiler.TreeVisitor`2.Visit(P input, IEnumerable`1 nodes)
+   at ScopeCompiler.VisitorContext`1.Visit(T node, Action accept)
+   at ScopeCompiler.FrontEnd.Ddl.SqlDdlResolver.OnBatch(Script input, Batch e)
+   at ScopeCompiler.VisitorContext`1.Visit(T node, Action accept)
+   at ScopeCompiler.FrontEnd.Ddl.SqlDdlResolver.Resolve()
+   at ScopeCompiler.FrontEnd.CompilePassHelper.Run(Action pass, Compiler compiler, CompilerTimer timer, Boolean throwOnErrors)
+   at ScopeCompiler.FrontEnd.SqlAstBuilder.BuildAst(Compiler compiler, FunctionCall parentCall, NameContext nameContext, SubroutineType subroutineType, Script parent, DiagnosticCollection diagnostics, Script[] legacyScripts)
+   at ScopeCompiler.FrontEnd.SqlAstBuilder.BuildAst(Script[] scripts)
+   at ScopeCompiler.FrontEnd.SqlCompileStrategy.&lt;&gt;c__DisplayClass7_0.&lt;AstBuildingPass&gt;b__1()
+   at ScopeCompiler.FrontEnd.CompilePassHelper.Run(Action pass, Compiler compiler, CompilerTimer timer, Boolean throwOnErrors)
+   at ScopeCompiler.FrontEnd.FrontEndRunner.Execute()
+   at ScopeCompiler.FrontEnd.CompilePipeline.DoExecutePipeline()
+   at ScopeCompiler.FrontEnd.CompilePipeline.DoCompile()</InternalDebugInfo>
+    </Error>
+  </ErrorList>
+  <WarningList />
+  <HelperCodePath>D:\Vatan\Learnings\DataLake\RahulDataLake\GovPostcodes\GovPostcodes\bin\Debug\Simplified\__ScopeCodeGenEngine__.dll.cpp</HelperCodePath>
+  <ResourceList />
+  <ReferenceList />
+  <ClusterResourceList />
+  <LocalRunSteps />
+  <LocalRunCachePath>D:\Vatan\Learnings\DataLake\RahulDataLake\GovPostcodes\GovPostcodes\bin\Debug\Simplified</LocalRunCachePath>
+  <LocalRunTempPath>D:\Vatan\Learnings\DataLake\RahulDataLake\GovPostcodes\GovPostcodes\bin\Debug\Simplified\_TMP</LocalRunTempPath>
+  <LocalRunRuntimePath>D:\Vatan\Learnings\DataLake\RahulDataLake\GovPostcodes\GovPostcodes\bin\Debug\Simplified</LocalRunRuntimePath>
+  <ScopeWorkingDir>D:\Vatan\Learnings\DataLake\RahulDataLake\GovPostcodes\GovPostcodes\bin\Debug\Simplified</ScopeWorkingDir>
+</CommonCompileResult>
