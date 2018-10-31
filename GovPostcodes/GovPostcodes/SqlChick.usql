@@ -12,21 +12,23 @@ USING Microsoft.Analytics.Samples.Formats.Json;
 // 1. Initialise variables for Input (e.g. JSON) and Output (e.g. CSV).
 //DECLARE @InputFile string = @"adl://govbiv.azuredatalakestore.net/BigData/MultiLevelChrome.json";
 //DECLARE @InputFile string = @"adl://govbiv.azuredatalakestore.net/BigData/Size84CommaSeparated.blob";
-DECLARE @InputFile string = @"adl://govbiv.azuredatalakestore.net/BigData/BigSize84CommaSeparated.blob";
-
+//DECLARE @InputFile string = @"adl://govbiv.azuredatalakestore.net/BigData/BigSize84CommaSeparated.blob";
+DECLARE @InputFile string = @"adl://govbiv.azuredatalakestore.net/TransformedBlobData/{*}";
 // @InputFile string = @"adl://govbiv.azuredatalakestore.net/BigData/MultiLevelChrome1CountryMiss.json";
 
 
 //DECLARE @countProvinceBasedOnCountryFile string = @"adl://govbiv.azuredatalakestore.net/BigData/countProvinceBasedOnCountry.csv";
 //DECLARE @countryProvinceFile string = @"adl://govbiv.azuredatalakestore.net/BigData/countryProvince.csv";
 
-DECLARE @sqlChickOutputFile string = @"adl://govbiv.azuredatalakestore.net/BigData/sqlChickOutput.csv";
+//DECLARE @sqlChickOutputFile string = @"adl://govbiv.azuredatalakestore.net/BigData/sqlChickOutput.csv";
+DECLARE @transBlobOutputFile string = @"adl://govbiv.azuredatalakestore.net/BigData/OutputVatan/transBlobOutput.csv";
 
 
 @json =
 EXTRACT
     [location] string,
-    [device] string
+    [device] string,
+    [custom.dimensions] string
 FROM
     @InputFile
 USING new JsonExtractor("context");
@@ -34,7 +36,8 @@ USING new JsonExtractor("context");
 @CreateJSONTuple = 
 SELECT 
  JsonFunctions.JsonTuple([location]) AS LocationData,
- JsonFunctions.JsonTuple([device]) AS DeviceData
+ JsonFunctions.JsonTuple([device]) AS DeviceData,
+ JsonFunctions.JsonTuple([custom.dimensions]) AS DimensionData
 FROM @json;
 
 @Dataset =
@@ -44,11 +47,12 @@ LocationData["country"] ?? "NA" AS Country
 ,LocationData["city"] ?? "N/A" AS City
  ,DeviceData["osVersion"] ?? "N/A" AS OsVersion
   ,DeviceData["roleName"] ?? "N/A" AS RoleName
+   ,DimensionData["Category"] ?? "N/A" AS Category
 FROM @CreateJSONTuple;
 
 
 OUTPUT @Dataset
-TO @sqlChickOutputFile
+TO @transBlobOutputFile
 USING Outputters.Csv(outputHeader:true,quoting:true);
 
 
