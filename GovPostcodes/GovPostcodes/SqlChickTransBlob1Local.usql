@@ -1,0 +1,62 @@
+﻿// A. CREATE ASSEMBLY: Register assemblies (if they do not already exist).
+CREATE ASSEMBLY IF NOT EXISTS [Newtonsoft.Json] FROM @"/Assemblies/Newtonsoft.Json.dll";
+CREATE ASSEMBLY IF NOT EXISTS [Microsoft.Analytics.Samples.Formats] FROM @"/Assemblies/Microsoft.Analytics.Samples.Formats.dll";
+ 
+// B. REFERENCE ASSEMBLY: Load assemblies for compile time and execution.
+REFERENCE ASSEMBLY [Newtonsoft.Json];
+REFERENCE ASSEMBLY [Microsoft.Analytics.Samples.Formats];
+
+// C. USING: Specify namespace to shorten function names (e.g. Microsoft.Analytics.Samples.Formats.Json.JsonExtractor)
+USING Microsoft.Analytics.Samples.Formats.Json;
+
+// 1. Initialise variables for Input (e.g. JSON) and Output (e.g. CSV).
+//DECLARE @InputFile string = @"adl://govbiv.azuredatalakestore.net/BigData/MultiLevelChrome.json";
+//DECLARE @InputFile string = @"adl://govbiv.azuredatalakestore.net/BigData/Size84CommaSeparated.blob";
+//DECLARE @InputFile string = @"adl://govbiv.azuredatalakestore.net/BigData/BigSize84CommaSeparated.blob";
+DECLARE @InputFile string = @"/TransformedBlobData/{*}";
+// @InputFile string = @"adl://govbiv.azuredatalakestore.net/BigData/MultiLevelChrome1CountryMiss.json";
+
+
+//DECLARE @countProvinceBasedOnCountryFile string = @"adl://govbiv.azuredatalakestore.net/BigData/countProvinceBasedOnCountry.csv";
+//DECLARE @countryProvinceFile string = @"adl://govbiv.azuredatalakestore.net/BigData/countryProvince.csv";
+
+//DECLARE @sqlChickOutputFile string = @"adl://govbiv.azuredatalakestore.net/BigData/sqlChickOutput.csv";
+DECLARE @transBlobOutputFile string = @"/TransformedBlobData/OutputVatan/transBlobOutput.csv";
+
+
+@json =
+EXTRACT
+    [location] string,
+    [device] string,
+    [custom] string
+FROM
+    @InputFile
+USING new JsonExtractor("context");
+
+@CreateJSONTuple = 
+SELECT 
+ JsonFunctions.JsonTuple([location]) AS LocationData,
+ JsonFunctions.JsonTuple([device]) AS DeviceData,
+ JsonFunctions.JsonTuple([custom]) AS CustomData
+FROM @json;
+
+@Dataset =
+SELECT
+LocationData["country"] ?? "NA" AS Country
+,LocationData["province"] ?? "NA" AS Province
+,LocationData["city"] ?? "N/A" AS City
+ ,DeviceData["osVersion"] ?? "N/A" AS OsVersion
+ ,DeviceData["roleName"] ?? "N/A" AS RoleName
+ ,CustomData["dimensions"] ?? "N/A"  AS Dimensions
+FROM @CreateJSONTuple;
+
+
+OUTPUT @Dataset
+TO @transBlobOutputFile
+USING Outputters.Csv(outputHeader:true,quoting:true);
+
+
+//// 3. Write values to CSV
+//OUTPUT @countryProvince
+//TO @countryProvinceFile
+//USING Outputters.Csv(outputHeader:true,quoting:true);
