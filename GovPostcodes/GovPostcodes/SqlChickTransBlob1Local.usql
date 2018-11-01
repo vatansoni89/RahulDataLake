@@ -21,40 +21,61 @@ DECLARE @InputFile string = @"/TransformedBlobData/{*}";
 //DECLARE @countryProvinceFile string = @"adl://govbiv.azuredatalakestore.net/BigData/countryProvince.csv";
 
 //DECLARE @sqlChickOutputFile string = @"adl://govbiv.azuredatalakestore.net/BigData/sqlChickOutput.csv";
-DECLARE @transBlobOutputFile string = @"/TransformedBlobData/OutputVatan/transBlobOutput.csv";
+DECLARE @output string = @"/TransformedBlobData/OutputVatan/transBlobOutput12.csv";
 
 
-@json =
-EXTRACT
-    [location] string,
-    [device] string,
-    [custom] string
-FROM
-    @InputFile
-USING new JsonExtractor("context");
+@json  =
+    EXTRACT location String,
+            device String,
+            custom String
+    FROM @InputFile
+    USING new Microsoft.Analytics.Samples.Formats.Json.JsonExtractor("context");
 
-@CreateJSONTuple = 
-SELECT 
- JsonFunctions.JsonTuple([location]) AS LocationData,
- JsonFunctions.JsonTuple([device]) AS DeviceData,
- JsonFunctions.JsonTuple([custom]) AS CustomData
-FROM @json;
+@CreateJSONTuple =
+    SELECT JsonFunctions.JsonTuple(location) AS LocationData,
+           JsonFunctions.JsonTuple(device) AS DeviceData,
+           JsonFunctions.JsonTuple(custom, "dimensions[0]") AS DimensionData0,
+           JsonFunctions.JsonTuple(custom, "dimensions[1]") AS DimensionData1,
+           JsonFunctions.JsonTuple(custom, "dimensions[2]") AS DimensionData2,
+           JsonFunctions.JsonTuple(custom, "dimensions[100]") AS DimensionData100 //Just to see what happen if we go out of range, and it dont give exception
+    FROM @json;
 
-@Dataset =
-SELECT
-LocationData["country"] ?? "NA" AS Country
-,LocationData["province"] ?? "NA" AS Province
-,LocationData["city"] ?? "N/A" AS City
- ,DeviceData["osVersion"] ?? "N/A" AS OsVersion
- ,DeviceData["roleName"] ?? "N/A" AS RoleName
- ,CustomData["dimensions"] ?? "N/A"  AS Dimensions
-FROM @CreateJSONTuple;
+@result =
+    SELECT LocationData["country"] ?? "N/A" AS Country,
+           LocationData["province"] ?? "N/A" AS Province,
+           LocationData["city"] ?? "N/A" AS City,
+           DeviceData["osVersion"] ?? "N/A" AS OsVersion,
+           DeviceData["roleName"] ?? "N/A" AS RoleName,
+           DimensionData0["dimensions[0]"] AS CategoryDimension0,
+           DimensionData1["dimensions[1]"] AS CategoryDimension1,
+           DimensionData2["dimensions[2]"] AS CategoryDimension2,
+           DimensionData2["dimensions[100]"] AS CategoryDimension100
+    FROM @CreateJSONTuple;
 
+@result =
+    SELECT Country,
+           Province,
+           City,
+           OsVersion,
+           RoleName,
+           JsonFunctions.JsonTuple(CategoryDimension0) AS CategoryDimension0,
+           JsonFunctions.JsonTuple(CategoryDimension1) AS CategoryDimension1,
+           JsonFunctions.JsonTuple(CategoryDimension2) AS CategoryDimension2,
+           JsonFunctions.JsonTuple(CategoryDimension100) AS CategoryDimension100
+    FROM @result;
 
-OUTPUT @Dataset
-TO @transBlobOutputFile
-USING Outputters.Csv(outputHeader:true,quoting:true);
+@result =
+    SELECT Country,
+           Province,
+           City,
+           OsVersion,
+           RoleName,
+           CategoryDimension0["Category"] ?? CategoryDimension1["Category"] ?? CategoryDimension2["Category"] ?? CategoryDimension100["Category"] ?? "N/A" AS Category
+    FROM @result;
 
+OUTPUT @result
+TO @output
+USING Outputters.Csv(outputHeader : true, quoting : true);
 
 //// 3. Write values to CSV
 //OUTPUT @countryProvince
