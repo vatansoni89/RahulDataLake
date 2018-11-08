@@ -31,6 +31,7 @@
     <Script Include="Rahul1.usql" />
     <Script Include="Simplified.usql" />
     <Script Include="SqlChick.usql" />
+    <Script Include="SqlChickTransBlob1Local.usql" />
     <ScriptCode Include="010CreateUkPostcodesDatabase.usql.cs">
       <DependentUpon>010CreateUkPostcodesDatabase.usql</DependentUpon>
     </ScriptCode>
@@ -64,13 +65,20 @@
     <ScriptCode Include="SqlChick.usql.cs">
       <DependentUpon>SqlChick.usql</DependentUpon>
     </ScriptCode>
+    <ScriptCode Include="SqlChickTransBlob1Local.usql.cs">
+      <DependentUpon>SqlChickTransBlob1Local.usql</DependentUpon>
+    </ScriptCode>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="NewFolder1\" />
+    <Folder Include="TransformedBlobData" />
     <Folder Include="sourcedata" />
     <Folder Include="sourcedata\districts" />
     <Folder Include="sourcedata\Bigdata" />
     <Folder Include="sourcedata\postcodes" />
     <Folder Include="sourcedata\postcodeDG" />
+    <Folder Include="TransformedBlobData\Source" />
+    <Folder Include="TransformedBlobData\OutputVatan" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="sourcedata\Bigdata\MultiLevelChrome.blob">
@@ -92,6 +100,12 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="sourcedata\postcodes\Postcodes.csv">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="TransformedBlobData\Source\1.blob">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="TransformedBlobData\Source\9.blob">
       <SubType>Content</SubType>
     </Content>
   </ItemGroup>

@@ -13,7 +13,7 @@ USING Microsoft.Analytics.Samples.Formats.Json;
 //DECLARE @InputFile string = @"adl://govbiv.azuredatalakestore.net/BigData/MultiLevelChrome.json";
 //DECLARE @InputFile string = @"adl://govbiv.azuredatalakestore.net/BigData/Size84CommaSeparated.blob";
 //DECLARE @InputFile string = @"adl://govbiv.azuredatalakestore.net/BigData/BigSize84CommaSeparated.blob";
-DECLARE @InputFile string = @"/TransformedBlobData/{*}";
+
 // @InputFile string = @"adl://govbiv.azuredatalakestore.net/BigData/MultiLevelChrome1CountryMiss.json";
 
 
@@ -21,6 +21,7 @@ DECLARE @InputFile string = @"/TransformedBlobData/{*}";
 //DECLARE @countryProvinceFile string = @"adl://govbiv.azuredatalakestore.net/BigData/countryProvince.csv";
 
 //DECLARE @sqlChickOutputFile string = @"adl://govbiv.azuredatalakestore.net/BigData/sqlChickOutput.csv";
+DECLARE @InputFile string = @"/TransformedBlobData/Source/{*}";
 DECLARE @output string = @"/TransformedBlobData/OutputVatan/transBlobOutput12.csv";
 
 

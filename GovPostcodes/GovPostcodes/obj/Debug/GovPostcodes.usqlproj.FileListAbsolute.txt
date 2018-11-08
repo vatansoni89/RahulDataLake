@@ -1,4 +1,3 @@
 D:\Vatan\Learnings\DataLake\RahulDataLake\GovPostcodes\GovPostcodes\bin\Debug\Algebra.xml
-D:\Vatan\Learnings\DataLake\RahulDataLake\GovPostcodes\GovPostcodes\obj\Debug\GovPostcodes.usqlprojAssemblyReference.cache
 D:\Vatan\Learnings\DataLake\RahulDataLake\GovPostcodes\GovPostcodes\obj\Debug\GovPostcodes.usqlproj.CoreCompileInputs.cache
 D:\Vatan\Learnings\DataLake\RahulDataLake\GovPostcodes\GovPostcodes\obj\Debug\Algebra.xml

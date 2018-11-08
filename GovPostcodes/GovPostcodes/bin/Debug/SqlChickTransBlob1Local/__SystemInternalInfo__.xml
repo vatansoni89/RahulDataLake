@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CSSRelatedInfo>
+  <OptimizerPlanInfo signatureVersion="1">
+    <TableScan present="True" occurrence="1" />
+    <PartitionSeek present="False" occurrence="0" />
+    <PartitionRange present="False" occurrence="0" />
+    <IndexSeek present="False" occurrence="0" />
+    <IndexRange present="False" occurrence="0" />
+    <Join present="False" occurrence="0" />
+    <GroupByAgg present="False" occurrence="0" />
+    <UDProcessor present="False" occurrence="0" />
+    <UDReducer present="False" occurrence="0" />
+    <UDCombiner present="False" occurrence="0" />
+    <UDMultiProcessor present="False" occurrence="0" />
+    <Top present="False" occurrence="0" />
+    <Costs>
+      <ExtractCardinality>1693.35714285714</ExtractCardinality>
+      <InputSize>47414</InputSize>
+      <OutputCardinality>1693.35714285714</OutputCardinality>
+      <NumTable>1</NumTable>
+      <DataTransferVolume>0</DataTransferVolume>
+      <Latency>-1</Latency>
+      <TotalCost>-1</TotalCost>
+      <EstimatedNumEdges>0</EstimatedNumEdges>
+    </Costs>
+    <OptimizerTrees>
+<InputTree>
+    <LogOp Id="LogOp_Output" Table="C:\Users\Z003D4KS\AppData\Local\USQLDataRoot\TransformedBlobData/OutputVatan/transBlobOutput12.csv" XMode="All" Out="Country,Province,City,OsVersion,RoleName,Category" Udf="IOutputter">
+      <OpInfo><TableGroupProperties Grp="Unknown" Remotable="False" Card="1693.36" AvgRowLength="48"/></OpInfo>
+      <LogOp Id="LogOp_Project" Remove="CategoryDimension0,CategoryDimension1,CategoryDimension2,CategoryDimension100">
+        <OpInfo><TableGroupProperties Grp="Unknown" Remotable="False" Card="1693.36" AvgRowLength="48"/></OpInfo>
+        <LogOp Id="LogOp_Project" Remove="CategoryDimension0,CategoryDimension1,CategoryDimension2,CategoryDimension100">
+          <OpInfo><TableGroupProperties Grp="Unknown" Remotable="False" Card="1693.36" AvgRowLength="1064"/></OpInfo>
+          <LogOp Id="LogOp_Project" Remove="LocationData,DeviceData,DimensionData0,DimensionData1,DimensionData2,DimensionData100">
+            <OpInfo><TableGroupProperties Grp="Unknown" Remotable="False" Card="1693.36" AvgRowLength="72"/></OpInfo>
+            <LogOp Id="LogOp_Project" Remove="location,device,custom">
+              <OpInfo><TableGroupProperties Grp="Unknown" Remotable="False" Card="1693.36" AvgRowLength="1536"/></OpInfo>
+              <LogOp Id="LogOp_Extract" Table="C:\Users\Z003D4KS\AppData\Local\USQLDataRoot\TransformedBlobData/Source/{*}" XMode="Parallel" PartitionType="Nil" Partitioning="" Partitions="2(EST)" Udf="JsonExtractor">
+                <OpInfo><TableGroupProperties Grp="0.0" Remotable="False" Card="1693.36" AvgRowLength="24"/></OpInfo>
+              </LogOp>
+              <AncOp Id="AncOp_PrjList"><OpInfo><ScalarGroupProperties Grp="Unknown"/></OpInfo>
+                <AncOp Id="AncOp_PrjEl" Column="LocationData"><OpInfo><ScalarGroupProperties Grp="2.0"/></OpInfo>
+                  <ScaOp Id="ScaOp_Udf" Udf="Microsoft.Analytics.Samples.Formats.Json.JsonFunctions.JsonTuple(location)" UsedColumn="location"><OpInfo><ScalarGroupProperties Grp="1.0"/></OpInfo>
+                  </ScaOp>
+                </AncOp>
+                <AncOp Id="AncOp_PrjEl" Column="DeviceData"><OpInfo><ScalarGroupProperties Grp="4.0"/></OpInfo>
+                  <ScaOp Id="ScaOp_Udf" Udf="Microsoft.Analytics.Samples.Formats.Json.JsonFunctions.JsonTuple(device)" UsedColumn="device"><OpInfo><ScalarGroupProperties Grp="3.0"/></OpInfo>
+                  </ScaOp>
+                </AncOp>
+                <AncOp Id="AncOp_PrjEl" Column="DimensionData0"><OpInfo><ScalarGroupProperties Grp="6.0"/></OpInfo>
+                  <ScaOp Id="ScaOp_Udf" Udf="Microsoft.Analytics.Samples.Formats.Json.JsonFunctions.JsonTuple(custom, &quot;dimensions[0]&quot;)" UsedColumn="custom"><OpInfo><ScalarGroupProperties Grp="5.0"/></OpInfo>
+                  </ScaOp>
+                </AncOp>
+                <AncOp Id="AncOp_PrjEl" Column="DimensionData1"><OpInfo><ScalarGroupProperties Grp="8.0"/></OpInfo>
+                  <ScaOp Id="ScaOp_Udf" Udf="Microsoft.Analytics.Samples.Formats.Json.JsonFunctions.JsonTuple(custom, &quot;dimensions[1]&quot;)" UsedColumn="custom"><OpInfo><ScalarGroupProperties Grp="7.0"/></OpInfo>
+                  </ScaOp>
+                </AncOp>
+                <AncOp Id="AncOp_PrjEl" Column="DimensionData2"><OpInfo><ScalarGroupProperties Grp="10.0"/></OpInfo>
+                  <ScaOp Id="ScaOp_Udf" Udf="Microsoft.Analytics.Samples.Formats.Json.JsonFunctions.JsonTuple(custom, &quot;dimensions[2]&quot;)" UsedColumn="custom"><OpInfo><ScalarGroupProperties Grp="9.0"/></OpInfo>
+                  </ScaOp>
+                </AncOp>
+                <AncOp Id="AncOp_PrjEl" Column="DimensionData100"><OpInfo><ScalarGroupProperties Grp="Unknown"/></OpInfo>
+                  <ScaOp Id="ScaOp_Udf" Udf="Microsoft.Analytics.Samples.Formats.Json.JsonFunctions.JsonTuple(custom, &quot;dimensions[100]&quot;)" UsedColumn="custom"><OpInfo><ScalarGroupProperties Grp="Unknown"/></OpInfo>
+                  </ScaOp>
+                </AncOp>
+              </AncOp>
+            </LogOp>
+            <AncOp Id="AncOp_PrjList"><OpInfo><ScalarGroupProperties Grp="31.0"/></OpInfo>
+              <AncOp Id="AncOp_PrjEl" Column="Country"><OpInfo><ScalarGroupProperties Grp="14.0"/></OpInfo>
+                <ScaOp Id="ScaOp_Udf" Udf="LocationData[&quot;country&quot;] ?? &quot;N/A&quot;" UsedColumn="LocationData"><OpInfo><ScalarGroupProperties Grp="13.0"/></OpInfo>
+                </ScaOp>
+              </AncOp>
+              <AncOp Id="AncOp_PrjEl" Column="Province"><OpInfo><ScalarGroupProperties Grp="16.0"/></OpInfo>
+                <ScaOp Id="ScaOp_Udf" Udf="LocationData[&quot;province&quot;] ?? &quot;N/A&quot;" UsedColumn="LocationData"><OpInfo><ScalarGroupProperties Grp="15.0"/></OpInfo>
+                </ScaOp>
+              </AncOp>
+              <AncOp Id="AncOp_PrjEl" Column="City"><OpInfo><ScalarGroupProperties Grp="18.0"/></OpInfo>
+                <ScaOp Id="ScaOp_Udf" Udf="LocationData[&quot;city&quot;] ?? &quot;N/A&quot;" UsedColumn="LocationData"><OpInfo><ScalarGroupProperties Grp="17.0"/></OpInfo>
+                </ScaOp>
+              </AncOp>
+              <AncOp Id="AncOp_PrjEl" Column="OsVersion"><OpInfo><ScalarGroupProperties Grp="20.0"/></OpInfo>
+                <ScaOp Id="ScaOp_Udf" Udf="DeviceData[&quot;osVersion&quot;] ?? &quot;N/A&quot;" UsedColumn="DeviceData"><OpInfo><ScalarGroupProperties Grp="19.0"/></OpInfo>
+                </ScaOp>
+              </AncOp>
+              <AncOp Id="AncOp_PrjEl" Column="RoleName"><OpInfo><ScalarGroupProperties Grp="22.0"/></OpInfo>
+                <ScaOp Id="ScaOp_Udf" Udf="DeviceData[&quot;roleName&quot;] ?? &quot;N/A&quot;" UsedColumn="DeviceData"><OpInfo><ScalarGroupProperties Grp="21.0"/></OpInfo>
+                </ScaOp>
+              </AncOp>
+              <AncOp Id="AncOp_PrjEl" Column="CategoryDimension0"><OpInfo><ScalarGroupProperties Grp="24.0"/></OpInfo>
+                <ScaOp Id="ScaOp_Udf" Udf="DimensionData0[&quot;dimensions[0]&quot;]" UsedColumn="DimensionData0"><OpInfo><ScalarGroupProperties Grp="23.0"/></OpInfo>
+                </ScaOp>
+              </AncOp>
+              <AncOp Id="AncOp_PrjEl" Column="CategoryDimension1"><OpInfo><ScalarGroupProperties Grp="26.0"/></OpInfo>
+                <ScaOp Id="ScaOp_Udf" Udf="DimensionData1[&quot;dimensions[1]&quot;]" UsedColumn="DimensionData1"><OpInfo><ScalarGroupProperties Grp="25.0"/></OpInfo>
+                </ScaOp>
+              </AncOp>
+              <AncOp Id="AncOp_PrjEl" Column="CategoryDimension2"><OpInfo><ScalarGroupProperties Grp="28.0"/></OpInfo>
+                <ScaOp Id="ScaOp_Udf" Udf="DimensionData2[&quot;dimensions[2]&quot;]" UsedColumn="DimensionData2"><OpInfo><ScalarGroupProperties Grp="27.0"/></OpInfo>
+                </ScaOp>
+              </AncOp>
+              <AncOp Id="AncOp_PrjEl" Column="CategoryDimension100"><OpInfo><ScalarGroupProperties Grp="30.0"/></OpInfo>
+                <ScaOp Id="ScaOp_Udf" Udf="DimensionData2[&quot;dimensions[100]&quot;]" UsedColumn="DimensionData2"><OpInfo><ScalarGroupProperties Grp="29.0"/></OpInfo>
+                </ScaOp>
+              </AncOp>
+            </AncOp>
+          </LogOp>
+          <AncOp Id="AncOp_PrjList"><OpInfo><ScalarGroupProperties Grp="41.0"/></OpInfo>
+            <AncOp Id="AncOp_PrjEl" Column="CategoryDimension0"><OpInfo><ScalarGroupProperties Grp="34.0"/></OpInfo>
+              <ScaOp Id="ScaOp_Udf" Udf="Microsoft.Analytics.Samples.Formats.Json.JsonFunctions.JsonTuple(CategoryDimension0)" UsedColumn="CategoryDimension0"><OpInfo><ScalarGroupProperties Grp="33.0"/></OpInfo>
+              </ScaOp>
+            </AncOp>
+            <AncOp Id="AncOp_PrjEl" Column="CategoryDimension1"><OpInfo><ScalarGroupProperties Grp="36.0"/></OpInfo>
+              <ScaOp Id="ScaOp_Udf" Udf="Microsoft.Analytics.Samples.Formats.Json.JsonFunctions.JsonTuple(CategoryDimension1)" UsedColumn="CategoryDimension1"><OpInfo><ScalarGroupProperties Grp="35.0"/></OpInfo>
+              </ScaOp>
+            </AncOp>
+            <AncOp Id="AncOp_PrjEl" Column="CategoryDimension2"><OpInfo><ScalarGroupProperties Grp="38.0"/></OpInfo>
+              <ScaOp Id="ScaOp_Udf" Udf="Microsoft.Analytics.Samples.Formats.Json.JsonFunctions.JsonTuple(CategoryDimension2)" UsedColumn="CategoryDimension2"><OpInfo><ScalarGroupProperties Grp="37.0"/></OpInfo>
+              </ScaOp>
+            </AncOp>
+            <AncOp Id="AncOp_PrjEl" Column="CategoryDimension100"><OpInfo><ScalarGroupProperties Grp="40.0"/></OpInfo>
+              <ScaOp Id="ScaOp_Udf" Udf="Microsoft.Analytics.Samples.Formats.Json.JsonFunctions.JsonTuple(CategoryDimension100)" UsedColumn="CategoryDimension100"><OpInfo><ScalarGroupProperties Grp="39.0"/></OpInfo>
+              </ScaOp>
+            </AncOp>
+          </AncOp>
+        </LogOp>
+        <AncOp Id="AncOp_PrjList"><OpInfo><ScalarGroupProperties Grp="45.0"/></OpInfo>
+          <AncOp Id="AncOp_PrjEl" Column="Category"><OpInfo><ScalarGroupProperties Grp="44.0"/></OpInfo>
+            <ScaOp Id="ScaOp_Udf" Udf="CategoryDimension0[&quot;Category&quot;] ?? CategoryDimension1[&quot;Category&quot;] ?? CategoryDimension2[&quot;Category&quot;] ?? CategoryDimension100[&quot;Category&quot;] ?? &quot;N/A&quot;" UsedColumn="CategoryDimension0,CategoryDimension1,CategoryDimension2,CategoryDimension100"><OpInfo><ScalarGroupProperties Grp="43.0"/></OpInfo>
+            </ScaOp>
+          </AncOp>
+        </AncOp>
+      </LogOp>
+    </LogOp>
+</InputTree>
+<OutputTree>
+    <PhyOp Id="PhyOp_Output" Table="C:\Users\Z003D4KS\AppData\Local\USQLDataRoot\TransformedBlobData/OutputVatan/transBlobOutput12.csv" XMode="Serial" Out="Country,Province,City,OsVersion,RoleName,Category" Udf="IOutputter">
+      <OpInfo><TableGroupProperties Grp="47.1" Remotable="False" Card="1693.36" AvgRowLength="48" PrtnSkewFactor="1" HT="6251289381771454245:228::4:10950302921196019229" HTS="15499358064353288729"/><Costs TotalCosts="5.68652" BubbleCost="5.68652" BubblePartitions="399"/></OpInfo>
+      <PhyOp Id="PhyOp_ComputeScalar">
+        <OpInfo><TableGroupProperties Grp="46.1" Remotable="False" Card="1693.36" AvgRowLength="48" PrtnSkewFactor="1" HT="10950302921196019229:212::3:10467726004169413088" HTS="6547027527055760150"/><Costs TotalCosts="5.0668" BubbleCost="5.0668" BubblePartitions="399"/></OpInfo>
+        <PhyOp Id="PhyOp_ComputeScalar">
+          <OpInfo><TableGroupProperties Grp="42.1" Remotable="False" Card="1693.36" AvgRowLength="1064" PrtnSkewFactor="1" HT="4194239319322382351:212::3:1500906926906102300" HTS="1860025456725641150"/><Costs TotalCosts="5.06663" BubbleCost="5.06663" BubblePartitions="399"/></OpInfo>
+          <PhyOp Id="PhyOp_ComputeScalar">
+            <OpInfo><TableGroupProperties Grp="32.1" Remotable="False" Card="1693.36" AvgRowLength="72" PrtnSkewFactor="1" HT="4187614090540180002:212::3:10427179156888230608" HTS="5512262017076612754"/><Costs TotalCosts="5.06646" BubbleCost="5.06646" BubblePartitions="399"/></OpInfo>
+            <PhyOp Id="PhyOp_ComputeScalar">
+              <OpInfo><TableGroupProperties Grp="12.1" Remotable="False" Card="1693.36" AvgRowLength="1280" PrtnSkewFactor="1" HT="13646277234055333274:212::3:17879099097964673838" HTS="14077301856039003037"/><Costs TotalCosts="5.06629" BubbleCost="5.06629" BubblePartitions="399"/></OpInfo>
+              <PhyOp Id="PhyOp_Extract" Table="C:\Users\Z003D4KS\AppData\Local\USQLDataRoot\TransformedBlobData/Source/{*}" XMode="Serial" Udf="JsonExtractor">
+                <OpInfo><TableGroupProperties Grp="0.1" Remotable="False" Card="1693.36" AvgRowLength="24" PrtnSkewFactor="1" HT="1125569012215811074:115::0:0" HTS="18387154121979351418"/><Costs TotalCosts="5.06612" BubbleCost="5.06612" BubblePartitions="399"/></OpInfo>
+              </PhyOp>
+              <AncOp Id="AncOp_PrjList"><OpInfo><ScalarGroupProperties Grp="11.0"/></OpInfo>
+                <AncOp Id="AncOp_PrjEl" Column="LocationData"><OpInfo><ScalarGroupProperties Grp="2.0"/></OpInfo>
+                  <ScaOp Id="ScaOp_Udf" Udf="Microsoft.Analytics.Samples.Formats.Json.JsonFunctions.JsonTuple(location)" UsedColumn="location"><OpInfo><ScalarGroupProperties Grp="1.0"/></OpInfo>
+                  </ScaOp>
+                </AncOp>
+                <AncOp Id="AncOp_PrjEl" Column="DeviceData"><OpInfo><ScalarGroupProperties Grp="4.0"/></OpInfo>
+                  <ScaOp Id="ScaOp_Udf" Udf="Microsoft.Analytics.Samples.Formats.Json.JsonFunctions.JsonTuple(device)" UsedColumn="device"><OpInfo><ScalarGroupProperties Grp="3.0"/></OpInfo>
+                  </ScaOp>
+                </AncOp>
+                <AncOp Id="AncOp_PrjEl" Column="DimensionData0"><OpInfo><ScalarGroupProperties Grp="6.0"/></OpInfo>
+                  <ScaOp Id="ScaOp_Udf" Udf="Microsoft.Analytics.Samples.Formats.Json.JsonFunctions.JsonTuple(custom, &quot;dimensions[0]&quot;)" UsedColumn="custom"><OpInfo><ScalarGroupProperties Grp="5.0"/></OpInfo>
+                  </ScaOp>
+                </AncOp>
+                <AncOp Id="AncOp_PrjEl" Column="DimensionData1"><OpInfo><ScalarGroupProperties Grp="8.0"/></OpInfo>
+                  <ScaOp Id="ScaOp_Udf" Udf="Microsoft.Analytics.Samples.Formats.Json.JsonFunctions.JsonTuple(custom, &quot;dimensions[1]&quot;)" UsedColumn="custom"><OpInfo><ScalarGroupProperties Grp="7.0"/></OpInfo>
+                  </ScaOp>
+                </AncOp>
+                <AncOp Id="AncOp_PrjEl" Column="DimensionData2"><OpInfo><ScalarGroupProperties Grp="10.0"/></OpInfo>
+                  <ScaOp Id="ScaOp_Udf" Udf="Microsoft.Analytics.Samples.Formats.Json.JsonFunctions.JsonTuple(custom, &quot;dimensions[2]&quot;)" UsedColumn="custom"><OpInfo><ScalarGroupProperties Grp="9.0"/></OpInfo>
+                  </ScaOp>
+                </AncOp>
+              </AncOp>
+            </PhyOp>
+            <AncOp Id="AncOp_PrjList"><OpInfo><ScalarGroupProperties Grp="31.0"/></OpInfo>
+              <AncOp Id="AncOp_PrjEl" Column="Country"><OpInfo><ScalarGroupProperties Grp="14.0"/></OpInfo>
+                <ScaOp Id="ScaOp_Udf" Udf="LocationData[&quot;country&quot;] ?? &quot;N/A&quot;" UsedColumn="LocationData"><OpInfo><ScalarGroupProperties Grp="13.0"/></OpInfo>
+                </ScaOp>
+              </AncOp>
+              <AncOp Id="AncOp_PrjEl" Column="Province"><OpInfo><ScalarGroupProperties Grp="16.0"/></OpInfo>
+                <ScaOp Id="ScaOp_Udf" Udf="LocationData[&quot;province&quot;] ?? &quot;N/A&quot;" UsedColumn="LocationData"><OpInfo><ScalarGroupProperties Grp="15.0"/></OpInfo>
+                </ScaOp>
+              </AncOp>
+              <AncOp Id="AncOp_PrjEl" Column="City"><OpInfo><ScalarGroupProperties Grp="18.0"/></OpInfo>
+                <ScaOp Id="ScaOp_Udf" Udf="LocationData[&quot;city&quot;] ?? &quot;N/A&quot;" UsedColumn="LocationData"><OpInfo><ScalarGroupProperties Grp="17.0"/></OpInfo>
+                </ScaOp>
+              </AncOp>
+              <AncOp Id="AncOp_PrjEl" Column="OsVersion"><OpInfo><ScalarGroupProperties Grp="20.0"/></OpInfo>
+                <ScaOp Id="ScaOp_Udf" Udf="DeviceData[&quot;osVersion&quot;] ?? &quot;N/A&quot;" UsedColumn="DeviceData"><OpInfo><ScalarGroupProperties Grp="19.0"/></OpInfo>
+                </ScaOp>
+              </AncOp>
+              <AncOp Id="AncOp_PrjEl" Column="RoleName"><OpInfo><ScalarGroupProperties Grp="22.0"/></OpInfo>
+                <ScaOp Id="ScaOp_Udf" Udf="DeviceData[&quot;roleName&quot;] ?? &quot;N/A&quot;" UsedColumn="DeviceData"><OpInfo><ScalarGroupProperties Grp="21.0"/></OpInfo>
+                </ScaOp>
+              </AncOp>
+              <AncOp Id="AncOp_PrjEl" Column="CategoryDimension0"><OpInfo><ScalarGroupProperties Grp="24.0"/></OpInfo>
+                <ScaOp Id="ScaOp_Udf" Udf="DimensionData0[&quot;dimensions[0]&quot;]" UsedColumn="DimensionData0"><OpInfo><ScalarGroupProperties Grp="23.0"/></OpInfo>
+                </ScaOp>
+              </AncOp>
+              <AncOp Id="AncOp_PrjEl" Column="CategoryDimension1"><OpInfo><ScalarGroupProperties Grp="26.0"/></OpInfo>
+                <ScaOp Id="ScaOp_Udf" Udf="DimensionData1[&quot;dimensions[1]&quot;]" UsedColumn="DimensionData1"><OpInfo><ScalarGroupProperties Grp="25.0"/></OpInfo>
+                </ScaOp>
+              </AncOp>
+              <AncOp Id="AncOp_PrjEl" Column="CategoryDimension2"><OpInfo><ScalarGroupProperties Grp="28.0"/></OpInfo>
+                <ScaOp Id="ScaOp_Udf" Udf="DimensionData2[&quot;dimensions[2]&quot;]" UsedColumn="DimensionData2"><OpInfo><ScalarGroupProperties Grp="27.0"/></OpInfo>
+                </ScaOp>
+              </AncOp>
+              <AncOp Id="AncOp_PrjEl" Column="CategoryDimension100"><OpInfo><ScalarGroupProperties Grp="30.0"/></OpInfo>
+                <ScaOp Id="ScaOp_Udf" Udf="DimensionData2[&quot;dimensions[100]&quot;]" UsedColumn="DimensionData2"><OpInfo><ScalarGroupProperties Grp="29.0"/></OpInfo>
+                </ScaOp>
+              </AncOp>
+            </AncOp>
+          </PhyOp>
+          <AncOp Id="AncOp_PrjList"><OpInfo><ScalarGroupProperties Grp="41.0"/></OpInfo>
+            <AncOp Id="AncOp_PrjEl" Column="CategoryDimension0"><OpInfo><ScalarGroupProperties Grp="34.0"/></OpInfo>
+              <ScaOp Id="ScaOp_Udf" Udf="Microsoft.Analytics.Samples.Formats.Json.JsonFunctions.JsonTuple(CategoryDimension0)" UsedColumn="CategoryDimension0"><OpInfo><ScalarGroupProperties Grp="33.0"/></OpInfo>
+              </ScaOp>
+            </AncOp>
+            <AncOp Id="AncOp_PrjEl" Column="CategoryDimension1"><OpInfo><ScalarGroupProperties Grp="36.0"/></OpInfo>
+              <ScaOp Id="ScaOp_Udf" Udf="Microsoft.Analytics.Samples.Formats.Json.JsonFunctions.JsonTuple(CategoryDimension1)" UsedColumn="CategoryDimension1"><OpInfo><ScalarGroupProperties Grp="35.0"/></OpInfo>
+              </ScaOp>
+            </AncOp>
+            <AncOp Id="AncOp_PrjEl" Column="CategoryDimension2"><OpInfo><ScalarGroupProperties Grp="38.0"/></OpInfo>
+              <ScaOp Id="ScaOp_Udf" Udf="Microsoft.Analytics.Samples.Formats.Json.JsonFunctions.JsonTuple(CategoryDimension2)" UsedColumn="CategoryDimension2"><OpInfo><ScalarGroupProperties Grp="37.0"/></OpInfo>
+              </ScaOp>
+            </AncOp>
+            <AncOp Id="AncOp_PrjEl" Column="CategoryDimension100"><OpInfo><ScalarGroupProperties Grp="40.0"/></OpInfo>
+              <ScaOp Id="ScaOp_Udf" Udf="Microsoft.Analytics.Samples.Formats.Json.JsonFunctions.JsonTuple(CategoryDimension100)" UsedColumn="CategoryDimension100"><OpInfo><ScalarGroupProperties Grp="39.0"/></OpInfo>
+              </ScaOp>
+            </AncOp>
+          </AncOp>
+        </PhyOp>
+        <AncOp Id="AncOp_PrjList"><OpInfo><ScalarGroupProperties Grp="45.0"/></OpInfo>
+          <AncOp Id="AncOp_PrjEl" Column="Category"><OpInfo><ScalarGroupProperties Grp="44.0"/></OpInfo>
+            <ScaOp Id="ScaOp_Udf" Udf="CategoryDimension0[&quot;Category&quot;] ?? CategoryDimension1[&quot;Category&quot;] ?? CategoryDimension2[&quot;Category&quot;] ?? CategoryDimension100[&quot;Category&quot;] ?? &quot;N/A&quot;" UsedColumn="CategoryDimension0,CategoryDimension1,CategoryDimension2,CategoryDimension100"><OpInfo><ScalarGroupProperties Grp="43.0"/></OpInfo>
+            </ScaOp>
+          </AncOp>
+        </AncOp>
+      </PhyOp>
+    </PhyOp>
+</OutputTree>
+</OptimizerTrees>
+  </OptimizerPlanInfo>
+  <ScopeCounters>
+    <Counter Name="Overall" Value="12.0651974" Unit="second" Intervals="0" />
+    <Counter Name="ResourcesDownloading" Value="0.0446505" Unit="second" Intervals="2" />
+    <Counter Name="FrontEndRun" Value="2.6873355" Unit="second" Intervals="1" />
+    <Counter Name="AstBuilder" Value="1.744522" Unit="second" Intervals="1" />
+    <Counter Name="SyntaxVerifier" Value="0.1377605" Unit="second" Intervals="1" />
+    <Counter Name="DdlResolver" Value="1.3873897" Unit="second" Intervals="1" />
+    <Counter Name="RoslynStartup" Value="0.1070733" Unit="second" Intervals="5" />
+    <Counter Name="SMS" Value="0.06765" Unit="second" Intervals="2" />
+    <Counter Name="ConstantFolding" Value="0.7279267" Unit="second" Intervals="6" />
+    <Counter Name="ReferenceLoading" Value="0.0043531" Unit="second" Intervals="2" />
+    <Counter Name="ResourceReferencePass" Value="0.0037562" Unit="second" Intervals="1" />
+    <Counter Name="InputOutputPass" Value="0.1502583" Unit="second" Intervals="1" />
+    <Counter Name="FileSetExpansion" Value="0.0496165" Unit="second" Intervals="1" />
+    <Counter Name="SStreamMetadataWait" Value="9.77E-05" Unit="second" Intervals="3" />
+    <Counter Name="SStreamMetadataAsync" Value="0" Unit="second" Intervals="0" />
+    <Counter Name="BinderPass" Value="0.6012269" Unit="second" Intervals="1" />
+    <Counter Name="ExpressionBinding" Value="0.4927487" Unit="second" Intervals="6" />
+    <Counter Name="OneColumnBinding" Value="0.0027848" Unit="second" Intervals="2" />
+    <Counter Name="QualifiedColumnBinding" Value="0" Unit="second" Intervals="0" />
+    <Counter Name="SimpleAggregateBinding" Value="0" Unit="second" Intervals="0" />
+    <Counter Name="RoslynFirstCall" Value="0.1186888" Unit="second" Intervals="1" />
+    <Counter Name="RoslynBinding" Value="0.3693767" Unit="second" Intervals="5" />
+    <Counter Name="RoslynParsing" Value="0.0367348" Unit="second" Intervals="5" />
+    <Counter Name="RoslynPreSemantic" Value="0.0071837" Unit="second" Intervals="5" />
+    <Counter Name="RoslynSemantic" Value="0.140429" Unit="second" Intervals="5" />
+    <Counter Name="RoslynPostSemantic" Value="0.1842113" Unit="second" Intervals="5" />
+    <Counter Name="SemanticAnalyzerPass" Value="0.056238" Unit="second" Intervals="1" />
+    <Counter Name="ErrorReporterPass" Value="0.0230009" Unit="second" Intervals="1" />
+    <Counter Name="GenerateOptTreePass" Value="0.1134257" Unit="second" Intervals="1" />
+    <Counter Name="OptimizerWait" Value="4.49E-05" Unit="second" Intervals="1" />
+    <Counter Name="Playback" Value="0.0397918" Unit="second" Intervals="2" />
+    <Counter Name="Optimizer" Value="0.417" Unit="second" Intervals="1" />
+    <Counter Name="CodeGeneration" Value="0.5295964" Unit="second" Intervals="1" />
+    <Counter Name="AlgebraAndManagedCodeGen" Value="0.2079428" Unit="second" Intervals="1" />
+    <Counter Name="ComputeSignature" Value="3.17E-05" Unit="second" Intervals="1" />
+    <Counter Name="PostProcessExecutionPlan" Value="0.004918" Unit="second" Intervals="1" />
+    <Counter Name="CreateSplitersOrSpools" Value="0.0010809" Unit="second" Intervals="1" />
+    <Counter Name="ReplaceFusionPipelinesWithAdapters" Value="1.66E-05" Unit="second" Intervals="1" />
+    <Counter Name="CreateWhereSelectEnumerators" Value="0.0630499" Unit="second" Intervals="1" />
+    <Counter Name="ComputePayloadMetadata" Value="0.0003598" Unit="second" Intervals="1" />
+    <Counter Name="SStreamStageProcessing" Value="0.0028769" Unit="second" Intervals="1" />
+    <Counter Name="ValidateStages" Value="0.0024865" Unit="second" Intervals="1" />
+    <Counter Name="CompileToAlgebra" Value="0.0522345" Unit="second" Intervals="1" />
+    <Counter Name="AnnotateIntermediateResults" Value="0.0044679" Unit="second" Intervals="1" />
+    <Counter Name="CreateCppReadyStage" Value="0.0085429" Unit="second" Intervals="1" />
+    <Counter Name="AdornAllWithMemoryModel" Value="0.0304021" Unit="second" Intervals="1" />
+    <Counter Name="SplitScopeVertices" Value="0.0309091" Unit="second" Intervals="1" />
+    <Counter Name="EstimateMemorySize" Value="0.002448" Unit="second" Intervals="1" />
+    <Counter Name="CalculateBubbles" Value="0.0002552" Unit="second" Intervals="1" />
+    <Counter Name="ManagedCodeEmission" Value="0.0125389" Unit="second" Intervals="1" />
+    <Counter Name="NativeCodeGeneration" Value="0.3054323" Unit="second" Intervals="1" />
+    <Counter Name="CodeCompiling" Value="6.9191937" Unit="second" Intervals="1" />
+    <Counter Name="EmitCompilationResult" Value="0.4415717" Unit="second" Intervals="1" />
+    <Counter Name="Table Files Read" Value="0" Unit="count" />
+    <Counter Name="CQO - Init" Value="0.00975069394313744" Unit="second" />
+    <Counter Name="CQO - CopyIn" Value="0.0834272182772088" Unit="second" />
+    <Counter Name="CQO - Search - Init" Value="0.000122327299526699" Unit="second" />
+    <Counter Name="CQO - Search - NNF" Value="4.56839606257117E-05" Unit="second" />
+    <Counter Name="CQO - Search - PreOptimization" Value="0.000506299100818838" Unit="second" />
+    <Counter Name="CQO - Search - Simplification" Value="0.0013893964884514" Unit="second" />
+    <Counter Name="CQO - Search - Join Reordering" Value="3.09593782752757E-05" Unit="second" />
+    <Counter Name="CQO - Search - Expression Sharing" Value="0.000104959843421057" Unit="second" />
+    <Counter Name="CQO - Search - Optimization" Value="0.000485533664170787" Unit="second" />
+    <Counter Name="CQO - Search - Subtotal" Value="0.0186877603230649" Unit="second" />
+    <Counter Name="CQO - Showplan" Value="0.00735247478698438" Unit="second" />
+    <Counter Name="CQO - Stage Generation" Value="0.159419277574235" Unit="second" />
+    <Counter Name="CQO - PostOptimization" Value="0.00507998091090042" Unit="second" />
+    <Counter Name="Working Set" Value="96476" Unit="KB" />
+    <Counter Name="Peak Working Set" Value="115516" Unit="KB" />
+    <Counter Name="Private Memory" Value="76956" Unit="KB" />
+    <Counter Name="Virtual Memory" Value="732120" Unit="KB" />
+    <Counter Name="Total CPU" Value="5.3976346" Unit="second" />
+    <Counter Name="CQO - Total" Value="0.296414148888936" Unit="second" />
+  </ScopeCounters>
+</CSSRelatedInfo>

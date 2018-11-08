@@ -1,0 +1,124 @@
+﻿{
+"CompilerPlanStart":"11\/9\/2018 12:52:38 AM"
+},
+{
+"Settings":"-c++ -mp -pdb Partial -OUTPUT_PATH C:\\Users\\Z003D4KS\\AppData\\Local\\USQLDataRoot -cosmosCluster localhost -apEnvironment Default -apCluster localhost -Off EnableScopeVertexResourceMode -On ForceShadowCopy -On ADL -Off Sirius -On USQL -Off SQLIPSQLProxy -Off SQLIPSQLProxyNative -Off PolarisScaleUp -buckets 1 -SplitPartitionThreshold 52428800 -ClientVersion 10.2.2.0"
+},
+{
+"statementText":"\/\/ Auto-generated header code\/\/ Auto-generated header code ended\/\/ User script\/\/ A. CREATE"
+,
+{
+"NodeName":"CreateAssemblyStatement"
+},
+{
+"Name":"Newtonsoft.Json"
+},
+{
+"SourcePath":"C:\\Users\\Z003D4KS\\AppData\\Local\\USQLDataRoot\\Assemblies\/Newtonsoft.Json.dll"
+}}
+,
+{
+"statementText":"CREATE ASSEMBLY IF NOT EXISTS [Microsoft.Analytics.Samples.Formats] FROM @\"\/Assemblies\/Microsoft.A"
+,
+{
+"NodeName":"CreateAssemblyStatement"
+},
+{
+"Name":"Microsoft.Analytics.Samples.Formats"
+},
+{
+"SourcePath":"C:\\Users\\Z003D4KS\\AppData\\Local\\USQLDataRoot\\Assemblies\/Microsoft.Analytics.Samples.Formats.dll"
+}}
+,
+{
+"statementText":" \/\/ B. REFERENCE ASSEMBLY: Load assemblies for compile time and execution.REFERENCE ASSEMBLY ["
+,
+{
+"NodeName":"ReferenceAssemblyStatement"
+},
+{
+"Name":"Newtonsoft.Json"
+}}
+,
+{
+"statementText":"REFERENCE ASSEMBLY [Microsoft.Analytics.Samples.Formats]"
+,
+{
+"NodeName":"ReferenceAssemblyStatement"
+},
+{
+"Name":"Microsoft.Analytics.Samples.Formats"
+}}
+,
+{
+"statementText":"\/\/ C. USING: Specify namespace to shorten function names (e.g. Microsoft.Analytics.Samples.Forma"
+,
+{
+"NodeName":"UsingStatement"
+}}
+,
+{
+"statementText":"\/\/ 1. Initialise variables for Input (e.g. JSON) and Output (e.g. CSV).\/\/DECLARE @InputFile st"
+,
+{
+"NodeName":"DeclareVariableStatement"
+},
+{
+"Name":"@InputFile"
+}}
+,
+{
+"statementText":"DECLARE @output string = @\"\/TransformedBlobData\/OutputVatan\/transBlobOutput12.csv\""
+,
+{
+"NodeName":"DeclareVariableStatement"
+},
+{
+"Name":"@output"
+}}
+,
+{
+"statementText":"    EXTRACT location String,            device String,            custom String    FROM @Inp"
+,
+{
+"NodeName":"QueryStatement"
+}}
+,
+{
+"statementText":"    SELECT JsonFunctions.JsonTuple(location) AS LocationData,           JsonFunctions.JsonTuple("
+,
+{
+"NodeName":"QueryStatement"
+}}
+,
+{
+"statementText":"    SELECT LocationData[\"country\"] ?? \"N\/A\" AS Country,           LocationData[\"province\"] ?? \"N"
+,
+{
+"NodeName":"QueryStatement"
+}}
+,
+{
+"statementText":"    SELECT Country,           Province,           City,           OsVersion,           Rol"
+,
+{
+"NodeName":"QueryStatement"
+}}
+,
+{
+"statementText":"    SELECT Country,           Province,           City,           OsVersion,           Rol"
+,
+{
+"NodeName":"QueryStatement"
+}}
+,
+{
+"statementText":"OUTPUT @resultTO @outputUSING Outputters.Csv(outputHeader : true, quoting : true)"
+,
+{
+"NodeName":"OutputStatement"
+}}
+,
+{
+"CompilerPlanEnd":"11\/9\/2018 12:52:38 AM"
+}

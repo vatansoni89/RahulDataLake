@@ -1,0 +1,13 @@
+[{"event":
+    [{"name":"4.8","count":1}],
+    "internal":{"data":{"id":"da3d8290-41f4-11e8-a8f8-e347c81391d3","documentVersion":"1.61"}},
+"context":{
+    "data":{"eventTime":"2018-04-17T04:08:27.392Z","isSynthetic":false,"samplingRate":100.0},
+    "cloud":{},
+    "device":{"type":"PC","osVersion":"Microsoft Windows NT 6.1.7601 Service Pack 1","roleName":"Connexx","roleInstance":"Connexx","screenResolution":{}},
+    "session":{"isFirst":false},
+    "operation":{},
+    "location":{"clientip":"0.0.0.0","continent":"Asia","country":"Singapore"},
+    "custom":{"dimensions":[{"Category":"Noah Version"},{"ai.device.language":"en-US"},{"RAMSize":"7.88622283935547"},{".NetVersion":"4.6.2"},{"64BitProcess":"False"},{"64BitOS":"True"},{"ProcessorCount":"4"}]}
+          }
+    }]
