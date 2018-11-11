@@ -27,6 +27,8 @@
     <Script Include="050 Create Districts Table.usql" />
     <Script Include="060 Populate Tables.usql" />
     <Script Include="DistrictTotalReport.usql" />
+    <Script Include="Explode.usql" />
+    <Script Include="ExplodeMobileNumbers.usql" />
     <Script Include="Rahul.usql" />
     <Script Include="Rahul1.usql" />
     <Script Include="Simplified.usql" />
@@ -52,6 +54,12 @@
     </ScriptCode>
     <ScriptCode Include="DistrictTotalReport.usql.cs">
       <DependentUpon>DistrictTotalReport.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="Explode.usql.cs">
+      <DependentUpon>Explode.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="ExplodeMobileNumbers.usql.cs">
+      <DependentUpon>ExplodeMobileNumbers.usql</DependentUpon>
     </ScriptCode>
     <ScriptCode Include="Rahul.usql.cs">
       <DependentUpon>Rahul.usql</DependentUpon>
@@ -106,6 +114,9 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="TransformedBlobData\Source\9.blob">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="TransformedBlobData\Source\example.blob">
       <SubType>Content</SubType>
     </Content>
   </ItemGroup>
