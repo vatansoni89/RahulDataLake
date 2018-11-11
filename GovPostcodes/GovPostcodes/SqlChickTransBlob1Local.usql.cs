@@ -9,4 +9,11 @@ using System.Text;
 
 namespace GovPostcodes
 {
+    public class Utility
+    { 
+        public static string GetName(SqlArray<string> str)
+        {
+            return str.FirstOrDefault() ?? "Hii";
+        }
+    }
 }

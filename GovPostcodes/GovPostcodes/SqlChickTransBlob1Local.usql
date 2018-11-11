@@ -30,7 +30,7 @@ DECLARE @output string = @"/TransformedBlobData/OutputVatan/transBlobOutput12.cs
             device String,
             custom String
     FROM @InputFile
-    USING new Microsoft.Analytics.Samples.Formats.Json.JsonExtractor("context");
+    USING new Microsoft.Analytics.Samples.Formats.Json.JsonExtractor("*");
 
 @CreateJSONTuple =
     SELECT JsonFunctions.JsonTuple(location) AS LocationData,
@@ -72,7 +72,8 @@ DECLARE @output string = @"/TransformedBlobData/OutputVatan/transBlobOutput12.cs
            OsVersion,
            RoleName,
            CategoryDimension0["Category"] ?? CategoryDimension1["Category"] ?? CategoryDimension2["Category"] ?? CategoryDimension100["Category"] ?? "N/A" AS Category
-    FROM @result;
+    FROM @result
+WHERE Country != "N/A";
 
 OUTPUT @result
 TO @output
