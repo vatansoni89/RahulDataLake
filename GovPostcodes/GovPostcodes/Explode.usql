@@ -1,0 +1,23 @@
+﻿@dep_employees = SELECT *  
+                   FROM (VALUES  
+                            ("Sales", "Rafferty")  
+                          , ("Engineering", "Jones,Heisenberg")  
+                          , ("Clerical", "Robinson,Smith,Johnson")  
+                          , ("Marketing", "")  
+                          , ("", "Williams")  
+                         ) AS DE(DepName, DepEmp);  
+  
+@KV =  
+    SELECT DepName, new SQL.ARRAY<string>(DepEmp.Split(',')) AS Employees  
+      FROM @dep_employees;  
+  
+@deps_exploded =  
+    SELECT kv.DepName, emp   
+      FROM @KV AS kv  
+     CROSS APPLY  
+     EXPLODE(kv.Employees) AS d(emp);  
+                   
+  
+OUTPUT @deps_exploded   
+TO "/TransformedBlobData/OutputVatan/ExplodeOutput.csv"  
+USING Outputters.Csv();
