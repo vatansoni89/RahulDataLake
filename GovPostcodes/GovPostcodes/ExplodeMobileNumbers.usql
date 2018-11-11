@@ -33,3 +33,18 @@
 OUTPUT @exploded
 TO "/Output/ReferenceGuide/StatementsAndExpressions/Explode/exampleA.csv"
 USING Outputters.Csv();
+
+/*
+ARRAY_AGG - Bonus Example
+This example does not use CROSS APPLY or EXPLODE; however, it illustrates how to reverse the outcome from the above example using ARRAY_AGG.
+
+    @result =
+        SELECT EmpName,
+               string.Join(", ", ARRAY_AGG(PhoneNumber)) AS PhoneNumbers
+        FROM @exploded
+        GROUP BY EmpName;
+
+    OUTPUT @result
+    TO "/Output/ReferenceGuide/StatementsAndExpressions/Explode/exampleB.csv"
+    USING Outputters.Csv();
+*/
