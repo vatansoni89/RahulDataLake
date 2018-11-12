@@ -26,14 +26,16 @@ DECLARE @output string = @"/TransformedBlobData/OutputVatan/transBlobOutput12.cs
 
 
 @json  =
-    EXTRACT location String,
+    EXTRACT [event] String,
+            location String,
             device String,
             custom String
     FROM @InputFile
     USING new Microsoft.Analytics.Samples.Formats.Json.JsonExtractor("*");
 
 @CreateJSONTuple =
-    SELECT JsonFunctions.JsonTuple(location) AS LocationData,
+    SELECT JsonFunctions.JsonTuple([event]).Values AS VentArray,
+           JsonFunctions.JsonTuple(location) AS LocationData,
            JsonFunctions.JsonTuple(device) AS DeviceData,
            JsonFunctions.JsonTuple(custom, "dimensions[0]") AS DimensionData0,
            JsonFunctions.JsonTuple(custom, "dimensions[1]") AS DimensionData1,
@@ -42,7 +44,8 @@ DECLARE @output string = @"/TransformedBlobData/OutputVatan/transBlobOutput12.cs
     FROM @json;
 
 @result =
-    SELECT LocationData["country"] ?? "N/A" AS Country,
+    SELECT VentArray,
+           LocationData["country"] ?? "N/A" AS Country,
            LocationData["province"] ?? "N/A" AS Province,
            LocationData["city"] ?? "N/A" AS City,
            DeviceData["osVersion"] ?? "N/A" AS OsVersion,
@@ -54,7 +57,8 @@ DECLARE @output string = @"/TransformedBlobData/OutputVatan/transBlobOutput12.cs
     FROM @CreateJSONTuple;
 
 @result =
-    SELECT Country,
+    SELECT VentArray,
+           Country,
            Province,
            City,
            OsVersion,
@@ -66,7 +70,8 @@ DECLARE @output string = @"/TransformedBlobData/OutputVatan/transBlobOutput12.cs
     FROM @result;
 
 @result =
-    SELECT Country,
+    SELECT GovPostcodes.Utility.GetName(VentArray) AS Name,
+           Country,
            Province,
            City,
            OsVersion,

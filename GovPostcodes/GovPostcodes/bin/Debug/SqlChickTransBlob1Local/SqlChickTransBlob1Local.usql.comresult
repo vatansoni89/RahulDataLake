@@ -1,217 +1,63 @@
 <?xml version="1.0"?>
 <CommonCompileResult xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <InputStreams>
-    <string>C:\Users\Z003D4KS\AppData\Local\USQLDataRoot\TransformedBlobData\Source\1.blob</string>
-    <string>C:\Users\Z003D4KS\AppData\Local\USQLDataRoot\TransformedBlobData\Source\9.blob</string>
-  </InputStreams>
-  <OutputStreams>
-    <OutputStreamInfo>
-      <Path>C:\Users\Z003D4KS\AppData\Local\USQLDataRoot\TransformedBlobData/OutputVatan/transBlobOutput12.csv</Path>
-      <SchemaString />
-      <IsBinary>false</IsBinary>
-      <IsSStream>false</IsSStream>
-      <TableName />
-    </OutputStreamInfo>
-  </OutputStreams>
-  <ScriptPath>D:\Vatan\Learnings\DataLake\RahulDataLake\GovPostcodes\GovPostcodes\bin\Debug\SqlChickTransBlob1Local\SqlChickTransBlob1Local.usql</ScriptPath>
-  <ScopeVertexDefinitionPath>D:\Vatan\Learnings\DataLake\RahulDataLake\GovPostcodes\GovPostcodes\bin\Debug\SqlChickTransBlob1Local\ScopeVertexDef.xml</ScopeVertexDefinitionPath>
-  <ScopeVertexDefinition>&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;ScopeVertices helperAssembly="__ScopeCodeGen__.dll" signatureVersion="1"&gt;
-  &lt;ScopeVertex id="SV1_Extract" cppReady="true"&gt;
-    &lt;operator id="Extract_0" uid="1" assemblyName="Microsoft.Analytics.Samples.Formats.dll" className="Microsoft.Analytics.Samples.Formats.Json.JsonExtractor"&gt;
-      &lt;input id="Extract_0" uid="1" schema="location:string,device:string,custom:string" inputIndex="0" numberOfInputs="ALL" /&gt;
-      &lt;output id="Extract_0_Data0" uid="2" schema="location:string,device:string,custom:string" /&gt;
-    &lt;/operator&gt;
-    &lt;operator id="Process_1" uid="3" assemblyName="__ScopeCodeGen__.dll" className="SqlFilterTransformer_6"&gt;
-      &lt;input id="Extract_0_Data0" uid="2" schema="location:string,device:string,custom:string" /&gt;
-      &lt;output id="Process_1_Data0" uid="4" schema="Country:string,Province:string,City:string,OsVersion:string,RoleName:string,Category:string" /&gt;
-    &lt;/operator&gt;
-    &lt;operator id="Output_2" uid="5" assemblyName="Microsoft.Analytics.Interfaces.dll" className="Microsoft.Analytics.Interfaces.IOutputter"&gt;
-      &lt;input id="Process_1_Data0" uid="4" schema="Country:string,Province:string,City:string,OsVersion:string,RoleName:string,Category:string" /&gt;
-      &lt;output id="SV1_Extract_out0" uid="5" schema="Country:string,Province:string,City:string,OsVersion:string,RoleName:string,Category:string" outputIndex="0" numberOfOutputs="1" finalOutput="true" /&gt;
-    &lt;/operator&gt;
-  &lt;/ScopeVertex&gt;
-&lt;/ScopeVertices&gt;</ScopeVertexDefinition>
-  <AlgebraPath>D:\Vatan\Learnings\DataLake\RahulDataLake\GovPostcodes\GovPostcodes\bin\Debug\SqlChickTransBlob1Local\__script__.abr</AlgebraPath>
-  <Algebra>&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;ScriptAndGraph GraphType="VertexCommands"&gt;
-  &lt;Vertices count="1"&gt;
-    &lt;Vertex index="1" command="-scopeVertex SV1_Extract  -i C:\Users\Z003D4KS\AppData\Local\USQLDataRoot\TransformedBlobData\Source\1.blob -i C:\Users\Z003D4KS\AppData\Local\USQLDataRoot\TransformedBlobData\Source\9.blob  -o D:\Vatan\Learnings\DataLake\RahulDataLake\GovPostcodes\GovPostcodes\bin\Debug\SqlChickTransBlob1Local\_TMP\scopetmpfile._SV1_Extract_out0(WITH_HEADER)" /&gt;
-    &lt;Vertex command="-concatenate -i D:\Vatan\Learnings\DataLake\RahulDataLake\GovPostcodes\GovPostcodes\bin\Debug\SqlChickTransBlob1Local\_TMP\scopetmpfile._SV1_Extract_out0 -o C:\Users\Z003D4KS\AppData\Local\USQLDataRoot\TransformedBlobData\OutputVatan\transBlobOutput12.csv" /&gt;
-  &lt;/Vertices&gt;
-  &lt;Outputs&gt;
-    &lt;Output path="C:\Users\Z003D4KS\AppData\Local\USQLDataRoot\TransformedBlobData\OutputVatan\transBlobOutput12.csv" isBinary="False" schema="Country:string,Province:string,City:string,OsVersion:string,RoleName:string,Category:string" /&gt;
-  &lt;/Outputs&gt;
-  &lt;graph serveForThirdParty="True" JsonErrors="True" JobType="BatchSqlIp" MaxPercentInputUnavailability="0" vertexExecutable="scopehost.exe" BroadcastCopyThroughCommandLine="ScopeEngine.dll -scopeVertex SV_CopyThrough"&gt;
-    &lt;process id="SV1_Extract" command="ScopeEngine.dll -scopeVertex SV1_Extract" managedMemorySize="859832320" nativeIOMemorySize="33554434" nativeExecutionMemorySize="8388608" DummyVertexOptimization="AllInputsEmptyImpliesOutputsEmpty|RunAtLeastOneVertex" trustedVertex="True"&gt;
-      &lt;input id="Extract_0[ALL]" streamSize="47414"&gt;
-        &lt;cosmosStream cosmosPath="C:\Users\Z003D4KS\AppData\Local\USQLDataRoot\TransformedBlobData\Source\1.blob" streamSize="46624" /&gt;
-        &lt;cosmosStream cosmosPath="C:\Users\Z003D4KS\AppData\Local\USQLDataRoot\TransformedBlobData\Source\9.blob" streamSize="790" /&gt;
-      &lt;/input&gt;
-      &lt;output id="SV1_Extract_out0" cosmosStream="C:\Users\Z003D4KS\AppData\Local\USQLDataRoot\TransformedBlobData\OutputVatan\transBlobOutput12.csv" /&gt;
-    &lt;/process&gt;
-    &lt;metadataoperation exeName="MetaDataExecutor.exe" argument="&amp;quot;commit&amp;quot; &amp;quot;-CosmosCluster&amp;quot; &amp;quot;localhost&amp;quot; &amp;quot;-APEnvironment&amp;quot; &amp;quot;Default&amp;quot; &amp;quot;-APCluster&amp;quot; &amp;quot;localhost&amp;quot;"&gt;
-      &lt;MetadataJob xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/Scope.Metadata.Contract"&gt;
-        &lt;StorageInfo&gt;
-          &lt;DataRoot&gt;C:\Users\Z003D4KS\AppData\Local\USQLDataRoot&lt;/DataRoot&gt;
-          &lt;MountPointName&gt;_catalog_&lt;/MountPointName&gt;
-          &lt;MountPointPhysicalPath&gt;C:\Users\Z003D4KS\AppData\Local\USQLDataRoot/_catalog_/&lt;/MountPointPhysicalPath&gt;
-        &lt;/StorageInfo&gt;
-        &lt;OperationsSequence&gt;
-          &lt;MetadataOperation i:type="AssertEntityExistsOperation"&gt;
-            &lt;Entity&gt;
-              &lt;Id&gt;7581a0d4-e4f2-43b7-b27a-377a2230e5a0&lt;/Id&gt;
-              &lt;Name&gt;
-                &lt;Server&gt;localcomputeaccount&lt;/Server&gt;
-                &lt;FirstPart&gt;master&lt;/FirstPart&gt;
-                &lt;SecondPart&gt;Newtonsoft.Json&lt;/SecondPart&gt;
-              &lt;/Name&gt;
-            &lt;/Entity&gt;
-            &lt;LastModificationTime i:nil="true" /&gt;
-            &lt;TypeName&gt;Scope.Metadata.Contract.AssemblyInfo&lt;/TypeName&gt;
-          &lt;/MetadataOperation&gt;
-          &lt;MetadataOperation i:type="AssertEntityExistsOperation"&gt;
-            &lt;Entity&gt;
-              &lt;Id&gt;16579bca-114a-40cd-b6d0-8c22a31773d8&lt;/Id&gt;
-              &lt;Name&gt;
-                &lt;Server&gt;localcomputeaccount&lt;/Server&gt;
-                &lt;FirstPart&gt;master&lt;/FirstPart&gt;
-                &lt;SecondPart&gt;Microsoft.Analytics.Samples.Formats&lt;/SecondPart&gt;
-              &lt;/Name&gt;
-            &lt;/Entity&gt;
-            &lt;LastModificationTime i:nil="true" /&gt;
-            &lt;TypeName&gt;Scope.Metadata.Contract.AssemblyInfo&lt;/TypeName&gt;
-          &lt;/MetadataOperation&gt;
-        &lt;/OperationsSequence&gt;
-        &lt;ScopeJobInfo&gt;
-          &lt;JobGuid&gt;00000000-0000-0000-0000-000000000000&lt;/JobGuid&gt;
-          &lt;JobName&gt;&lt;/JobName&gt;
-        &lt;/ScopeJobInfo&gt;
-      &lt;/MetadataJob&gt;
-    &lt;/metadataoperation&gt;
-  &lt;/graph&gt;
-  &lt;Scopescript&gt;// Auto-generated header code
+  <InputStreams />
+  <ScriptPath>D:\Vatan\Learnings\DataLake\RahulDataLake\RahulDataLake\GovPostcodes\GovPostcodes\bin\Debug\SqlChickTransBlob1Local\SqlChickTransBlob1Local.usql</ScriptPath>
+  <ScopeVertexDefinitionPath>D:\Vatan\Learnings\DataLake\RahulDataLake\RahulDataLake\GovPostcodes\GovPostcodes\bin\Debug\SqlChickTransBlob1Local\ScopeVertexDef.xml</ScopeVertexDefinitionPath>
+  <AlgebraPath>D:\Vatan\Learnings\DataLake\RahulDataLake\RahulDataLake\GovPostcodes\GovPostcodes\bin\Debug\SqlChickTransBlob1Local\__script__.abr</AlgebraPath>
+  <ErrorList>
+    <Error>
+      <Line>10</Line>
+      <Column>17</Column>
+      <Start>35049</Start>
+      <End>35164</End>
+      <Message>E_CSC_USER_SAMERESOURCEWITHDIFFERENTPATH: Script contains two different resources with identical file name: Newtonsoft.Json.dll
+First path: C:\Users\Z003D4KS\AppData\Local\USQLDataRoot\_catalog_/database/0997e70d-f9f9-4bae-947a-54330574d5b5/assembly/7581a0d4-e4f2-43b7-b27a-377a2230e5a0/Newtonsoft.Json.dll
+Second path: D:\Vatan\Learnings\DataLake\RahulDataLake\RahulDataLake\GovPostcodes\GovPostcodes\Assemblies\Newtonsoft.Json.dll
+Description:
+Resources must have unique file names as they are put into a single directory during compilation and execution.
+Resolution:
+Ensure that all resources have unique file names or in case of identical files use only one copy.</Message>
+      <InternalDebugInfo>E_CSC_USER_SAMERESOURCEWITHDIFFERENTPATH: Script contains two different resources with identical file name: Newtonsoft.Json.dll
+First path: C:\Users\Z003D4KS\AppData\Local\USQLDataRoot\_catalog_/database/0997e70d-f9f9-4bae-947a-54330574d5b5/assembly/7581a0d4-e4f2-43b7-b27a-377a2230e5a0/Newtonsoft.Json.dll
+Second path: D:\Vatan\Learnings\DataLake\RahulDataLake\RahulDataLake\GovPostcodes\GovPostcodes\Assemblies\Newtonsoft.Json.dll
+Description:
+Resources must have unique file names as they are put into a single directory during compilation and execution.
+Resolution:
+Ensure that all resources have unique file names or in case of identical files use only one copy.... at token '@"D:\Vatan\Learnings\DataLake\RahulDataLake\RahulDataLake\GovPostcodes\GovPostcodes\Assemblies\Newtonsoft.Json.dll"', line 10
+near the ###:
+**************
+000000000000000000000000000000000000000000000
+    AS "__codeBehind_dbh0vjkl.0yh.pdb");
+
+REFERENCE ASSEMBLY [__codeBehind_dbh0vjkl.0yh];
+
+
+DEPLOY RESOURCE  ### @"D:\Vatan\Learnings\DataLake\RahulDataLake\RahulDataLake\GovPostcodes\GovPostcodes\Assemblies\Newtonsoft.Json.dll";
 
 // Auto-generated header code ended
-// User script
-
-// A. CREATE ASSEMBLY: Register assemblies (if they do not already exist).
-CREATE ASSEMBLY IF NOT EXISTS [Newtonsoft.Json] FROM @"/Assemblies/Newtonsoft.Json.dll";
-CREATE ASSEMBLY IF NOT EXISTS [Microsoft.Analytics.Samples.Formats] FROM @"/Assemblies/Microsoft.Analytics.Samples.Formats.dll";
- 
-// B. REFERENCE ASSEMBLY: Load assemblies for compile time and execution.
-REFERENCE ASSEMBLY [Newtonsoft.Json];
-REFERENCE ASSEMBLY [Microsoft.Analytics.Samples.Formats];
-
-// C. USING: Specify namespace to shorten function names (e.g. Microsoft.Analytics.Samples.Formats.Json.JsonExtractor)
-USING Microsoft.Analytics.Samples.Formats.Json;
-
-// 1. Initialise variables for Input (e.g. JSON) and Output (e.g. CSV).
-//DECLARE @InputFile string = @"adl://govbiv.azuredatalakestore.net/BigData/MultiLevelChrome.json";
-//DECLARE @InputFile string = @"adl://govbiv.azuredatalakestore.net/BigData/Size84CommaSeparated.blob";
-//DECLARE @InputFile string = @"adl://govbiv.azuredatalakestore.net/BigData/BigSize84CommaSeparated.blob";
-
-// @InputFile string = @"adl://govbiv.azuredatalakestore.net/BigData/MultiLevelChrome1CountryMiss.json";
-
-
-//DECLARE @countProvinceBasedOnCountryFile string = @"adl://govbiv.azuredatalakestore.net/BigData/countProvinceBasedOnCountry.csv";
-//DECLARE @countryProvinceFile string = @"adl://govbiv.azuredatalakestore.net/BigData/countryProvince.csv";
-
-//DECLARE @sqlChickOutputFile string = @"adl://govbiv.azuredatalakestore.net/BigData/sqlChickOutput.csv";
-DECLARE @InputFile string = @"/TransformedBlobData/Source/{*}";
-DECLARE @output string = @"/TransformedBlobData/OutputVatan/transBlobOutput12.csv";
-
-
-@json  =
-    EXTRACT location String,
-            device String,
-            custom String
-    FROM @InputFile
-    USING new Microsoft.Analytics.Samples.Formats.Json.JsonExtractor("context");
-
-@CreateJSONTuple =
-    SELECT JsonFunctions.JsonTuple(location) AS LocationData,
-           JsonFunctions.JsonTuple(device) AS DeviceData,
-           JsonFunctions.JsonTuple(custom, "dimensions[0]") AS DimensionData0,
-           JsonFunctions.JsonTuple(custom, "dimensions[1]") AS DimensionData1,
-           JsonFunctions.JsonTuple(custom, "dimensions[2]") AS DimensionData2,
-           JsonFunctions.JsonTuple(custom, "dimensions[100]") AS DimensionData100 //Just to see what happen if we go out of range, and it dont give exception
-    FROM @json;
-
-@result =
-    SELECT LocationData["country"] ?? "N/A" AS Country,
-           LocationData["province"] ?? "N/A" AS Province,
-           LocationData["city"] ?? "N/A" AS City,
-           DeviceData["osVersion"] ?? "N/A" AS OsVersion,
-           DeviceData["roleName"] ?? "N/A" AS RoleName,
-           DimensionData0["dimensions[0]"] AS CategoryDimension0,
-           DimensionData1["dimensions[1]"] AS CategoryDimension1,
-           DimensionData2["dimensions[2]"] AS CategoryDimension2,
-           DimensionData2["dimensions[100]"] AS CategoryDimension100
-    FROM @CreateJSONTuple;
-
-@result =
-    SELECT Country,
-           Province,
-           City,
-           OsVersion,
-           RoleName,
-           JsonFunctions.JsonTuple(CategoryDimension0) AS CategoryDimension0,
-           JsonFunctions.JsonTuple(CategoryDimension1) AS CategoryDimension1,
-           JsonFunctions.JsonTuple(CategoryDimension2) AS CategoryDimension2,
-           JsonFunctions.JsonTuple(CategoryDimension100) AS CategoryDimension100
-    FROM @result;
-
-@result =
-    SELECT Country,
-           Province,
-           City,
-           OsVersion,
-           RoleName,
-           CategoryDimension0["Category"] ?? CategoryDimension1["Category"] ?? CategoryDimension2["Category"] ?? CategoryDimension100["Category"] ?? "N/A" AS Category
-    FROM @result;
-
-OUTPUT @result
-TO @output
-USING Outputters.Csv(outputHeader : true, quoting : true);
-
-//// 3. Write values to CSV
-//OUTPUT @countryProvince
-//TO @countryProvinceFile
-//USING Outputters.Csv(outputHeader:true,quoting:true);
-
-// User script ended
-// Auto-generated footer code
-
-// Auto-generated footer code ended
-
-&lt;/Scopescript&gt;
-  &lt;Optimization succeeded="true" time="00:00:00.4170000" latency="-1" totalCost="-1" /&gt;
-  &lt;ScopeVertexAnnotations&gt;
-    &lt;ScopeVertex name="SV1_Extract"&gt;
-      &lt;Operation annotation="EXTRACT USING JsonExtractor" /&gt;
-      &lt;Operation annotation="OUTPUT USING IOutputter" /&gt;
-    &lt;/ScopeVertex&gt;
-  &lt;/ScopeVertexAnnotations&gt;
-&lt;/ScriptAndGraph&gt;</Algebra>
-  <ErrorList />
+// U
+**************
+ScopeCompiler.CompilationException: E_CSC_USER_SAMERESOURCEWITHDIFFERENTPATH: Script contains two different resources with identical file name: Newtonsoft.Json.dll
+First path: C:\Users\Z003D4KS\AppData\Local\USQLDataRoot\_catalog_/database/0997e70d-f9f9-4bae-947a-54330574d5b5/assembly/7581a0d4-e4f2-43b7-b27a-377a2230e5a0/Newtonsoft.Json.dll
+Second path: D:\Vatan\Learnings\DataLake\RahulDataLake\RahulDataLake\GovPostcodes\GovPostcodes\Assemblies\Newtonsoft.Json.dll
+Description:
+Resources must have unique file names as they are put into a single directory during compilation and execution.
+Resolution:
+Ensure that all resources have unique file names or in case of identical files use only one copy.
+   at ScopeCompiler.ResourceStorage.VerifyResources()
+   at ScopeCompiler.FrontEnd.FrontEndRunner.Execute()
+   at ScopeCompiler.FrontEnd.CompilePipeline.DoExecutePipeline()
+   at ScopeCompiler.FrontEnd.CompilePipeline.DoCompile()</InternalDebugInfo>
+    </Error>
+  </ErrorList>
   <WarningList />
-  <HelperCodePath>D:\Vatan\Learnings\DataLake\RahulDataLake\GovPostcodes\GovPostcodes\bin\Debug\SqlChickTransBlob1Local\__ScopeCodeGenEngine__.dll.cpp</HelperCodePath>
-  <ResourceList>
-    <string>D:\Vatan\Learnings\DataLake\RahulDataLake\GovPostcodes\GovPostcodes\bin\Debug\SqlChickTransBlob1Local\Newtonsoft.Json.dll</string>
-    <string>D:\Vatan\Learnings\DataLake\RahulDataLake\GovPostcodes\GovPostcodes\bin\Debug\SqlChickTransBlob1Local\Microsoft.Analytics.Samples.Formats.dll</string>
-  </ResourceList>
-  <ReferenceList>
-    <string>C:\Users\Z003D4KS\AppData\Local\USQLDataRoot\_catalog_/database/0997e70d-f9f9-4bae-947a-54330574d5b5/assembly/7581a0d4-e4f2-43b7-b27a-377a2230e5a0/Newtonsoft.Json.dll</string>
-    <string>C:\Users\Z003D4KS\AppData\Local\USQLDataRoot\_catalog_/database/0997e70d-f9f9-4bae-947a-54330574d5b5/assembly/16579bca-114a-40cd-b6d0-8c22a31773d8/Microsoft.Analytics.Samples.Formats.dll</string>
-  </ReferenceList>
+  <HelperCodePath>D:\Vatan\Learnings\DataLake\RahulDataLake\RahulDataLake\GovPostcodes\GovPostcodes\bin\Debug\SqlChickTransBlob1Local\__ScopeCodeGenEngine__.dll.cpp</HelperCodePath>
+  <ResourceList />
+  <ReferenceList />
   <ClusterResourceList />
-  <LocalRunSteps>
-    <string>-scopeVertex SV1_Extract  -i C:\Users\Z003D4KS\AppData\Local\USQLDataRoot\TransformedBlobData\Source\1.blob -i C:\Users\Z003D4KS\AppData\Local\USQLDataRoot\TransformedBlobData\Source\9.blob  -o D:\Vatan\Learnings\DataLake\RahulDataLake\GovPostcodes\GovPostcodes\bin\Debug\SqlChickTransBlob1Local\_TMP\scopetmpfile._SV1_Extract_out0(WITH_HEADER) -managedMemorySize 859832320</string>
-    <string>-concatenate -i D:\Vatan\Learnings\DataLake\RahulDataLake\GovPostcodes\GovPostcodes\bin\Debug\SqlChickTransBlob1Local\_TMP\scopetmpfile._SV1_Extract_out0 -o C:\Users\Z003D4KS\AppData\Local\USQLDataRoot\TransformedBlobData\OutputVatan\transBlobOutput12.csv -s "Country:string,Province:string,City:string,OsVersion:string,RoleName:string,Category:string"</string>
-  </LocalRunSteps>
-  <LocalRunCachePath>D:\Vatan\Learnings\DataLake\RahulDataLake\GovPostcodes\GovPostcodes\bin\Debug\SqlChickTransBlob1Local</LocalRunCachePath>
-  <LocalRunTempPath>D:\Vatan\Learnings\DataLake\RahulDataLake\GovPostcodes\GovPostcodes\bin\Debug\SqlChickTransBlob1Local\_TMP</LocalRunTempPath>
-  <LocalRunRuntimePath>D:\Vatan\Learnings\DataLake\RahulDataLake\GovPostcodes\GovPostcodes\bin\Debug\SqlChickTransBlob1Local</LocalRunRuntimePath>
-  <ScopeWorkingDir>D:\Vatan\Learnings\DataLake\RahulDataLake\GovPostcodes\GovPostcodes\bin\Debug\SqlChickTransBlob1Local</ScopeWorkingDir>
+  <LocalRunSteps />
+  <LocalRunCachePath>D:\Vatan\Learnings\DataLake\RahulDataLake\RahulDataLake\GovPostcodes\GovPostcodes\bin\Debug\SqlChickTransBlob1Local</LocalRunCachePath>
+  <LocalRunTempPath>D:\Vatan\Learnings\DataLake\RahulDataLake\RahulDataLake\GovPostcodes\GovPostcodes\bin\Debug\SqlChickTransBlob1Local\_TMP</LocalRunTempPath>
+  <LocalRunRuntimePath>D:\Vatan\Learnings\DataLake\RahulDataLake\RahulDataLake\GovPostcodes\GovPostcodes\bin\Debug\SqlChickTransBlob1Local</LocalRunRuntimePath>
+  <ScopeWorkingDir>D:\Vatan\Learnings\DataLake\RahulDataLake\RahulDataLake\GovPostcodes\GovPostcodes\bin\Debug\SqlChickTransBlob1Local</ScopeWorkingDir>
 </CommonCompileResult>

@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="NewFolder1\" />
+    <Folder Include="Assemblies" />
     <Folder Include="TransformedBlobData" />
     <Folder Include="sourcedata" />
     <Folder Include="sourcedata\districts" />
@@ -89,6 +90,9 @@
     <Folder Include="TransformedBlobData\OutputVatan" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assemblies\Newtonsoft.Json.dll">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="sourcedata\Bigdata\MultiLevelChrome.blob">
       <SubType>Content</SubType>
     </Content>
@@ -116,9 +120,14 @@
     <Content Include="TransformedBlobData\Source\9.blob">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="TransformedBlobData\Source\example.blob">
-      <SubType>Content</SubType>
-    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <Name>Newtonsoft.Json</Name>
+      <AssemblyName>Newtonsoft.Json.dll</AssemblyName>
+      <HintPath>Assemblies\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <!-- check for SDK Build target in current path then in USQLSDKPath in the case of command line build -->
   <Import Project="UsqlSDKBuild.targets" Condition="'$(BuildingInsideVisualStudio)' != 'true' And  Exists('UsqlSDKBuild.targets')" />

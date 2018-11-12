@@ -1,11 +1,46 @@
 ﻿{
-"CompilerPlanStart":"11\/9\/2018 12:52:38 AM"
+"CompilerPlanStart":"11\/12\/2018 1:38:00 PM"
 },
 {
-"Settings":"-c++ -mp -pdb Partial -OUTPUT_PATH C:\\Users\\Z003D4KS\\AppData\\Local\\USQLDataRoot -cosmosCluster localhost -apEnvironment Default -apCluster localhost -Off EnableScopeVertexResourceMode -On ForceShadowCopy -On ADL -Off Sirius -On USQL -Off SQLIPSQLProxy -Off SQLIPSQLProxyNative -Off PolarisScaleUp -buckets 1 -SplitPartitionThreshold 52428800 -ClientVersion 10.2.2.0"
+"Settings":"-c++ -mp -pdb Partial -OUTPUT_PATH C:\\Users\\Z003D4KS\\AppData\\Local\\USQLDataRoot -cosmosCluster localhost -apEnvironment Default -apCluster localhost -On ForceShadowCopy -On ADL -On USQL -Off SQLIPSQLProxy -Off SQLIPSQLProxyNative -SplitPartitionThreshold 52428800 -ClientVersion 10.2.2.0"
 },
 {
-"statementText":"\/\/ Auto-generated header code\/\/ Auto-generated header code ended\/\/ User script\/\/ A. CREATE"
+"CompilerPlanEnd":"11\/12\/2018 1:38:00 PM"
+}{
+"CompilerPlanStart":"11\/12\/2018 1:39:38 PM"
+},
+{
+"Settings":"-c++ -mp -pdb Partial -OUTPUT_PATH C:\\Users\\Z003D4KS\\AppData\\Local\\USQLDataRoot -cosmosCluster localhost -apEnvironment Default -apCluster localhost -On ForceShadowCopy -On ADL -On USQL -Off SQLIPSQLProxy -Off SQLIPSQLProxyNative -SplitPartitionThreshold 52428800 -ClientVersion 10.2.2.0"
+},
+{
+"statementText":"\/\/ Auto-generated header codeCREATE ASSEMBLY [__codeBehind_iwsdl1dl.xdd] FROM 0x4D5A900003000000"
+,
+{
+"NodeName":"CreateAssemblyStatement"
+},
+{
+"Name":"__codeBehind_iwsdl1dl.xdd"
+}}
+,
+{
+"statementText":"REFERENCE ASSEMBLY [__codeBehind_iwsdl1dl.xdd]"
+,
+{
+"NodeName":"ReferenceAssemblyStatement"
+},
+{
+"Name":"__codeBehind_iwsdl1dl.xdd"
+}}
+,
+{
+"statementText":"DEPLOY RESOURCE @\"C:\\Program Files\\Microsoft SDKs\\Azure\\.NET SDK\\v2.9\\bin\\plugins\\Diagnostics\\"
+,
+{
+"NodeName":"ResourceStatement"
+}}
+,
+{
+"statementText":"\n\/\/ Auto-generated header code ended\/\/ User script\/\/ A. CREATE ASSEMBLY: Register assemblies"
 ,
 {
 "NodeName":"CreateAssemblyStatement"
@@ -78,35 +113,35 @@
 }}
 ,
 {
-"statementText":"    EXTRACT location String,            device String,            custom String    FROM @Inp"
+"statementText":"    EXTRACT vent String,            location String,            device String,            cu"
 ,
 {
 "NodeName":"QueryStatement"
 }}
 ,
 {
-"statementText":"    SELECT JsonFunctions.JsonTuple(location) AS LocationData,           JsonFunctions.JsonTuple("
+"statementText":"    SELECT JsonFunctions.JsonTuple(vent).Values AS VentArray,           JsonFunctions.JsonTuple("
 ,
 {
 "NodeName":"QueryStatement"
 }}
 ,
 {
-"statementText":"    SELECT LocationData[\"country\"] ?? \"N\/A\" AS Country,           LocationData[\"province\"] ?? \"N"
+"statementText":"    SELECT VentArray,           LocationData[\"country\"] ?? \"N\/A\" AS Country,           Locatio"
 ,
 {
 "NodeName":"QueryStatement"
 }}
 ,
 {
-"statementText":"    SELECT Country,           Province,           City,           OsVersion,           Rol"
+"statementText":"    SELECT VentArray,           Country,           Province,           City,           OsV"
 ,
 {
 "NodeName":"QueryStatement"
 }}
 ,
 {
-"statementText":"    SELECT Country,           Province,           City,           OsVersion,           Rol"
+"statementText":"    SELECT GovPostcodes.Utility.GetName(VentArray) AS Name,           Country,           Provi"
 ,
 {
 "NodeName":"QueryStatement"
@@ -120,5 +155,1295 @@
 }}
 ,
 {
-"CompilerPlanEnd":"11\/9\/2018 12:52:38 AM"
+"statementText":"\/\/\/\/ 3. Write values to CSV\/\/OUTPUT @countryProvince\/\/TO @countryProvinceFile\/\/USING Outpu"
+,
+{
+"NodeName":"UseDatabaseStatement"
+},
+{
+"Name":"master"
+}}
+,
+{
+"statementText":"USE SCHEMA [dbo]"
+,
+{
+"NodeName":"UseSchemaStatement"
+},
+{
+"Name":"dbo"
+}}
+,
+{
+"statementText":"DROP ASSEMBLY [__codeBehind_iwsdl1dl.xdd]"
+,
+{
+"NodeName":"DropAssemblyStatement"
+},
+{
+"Name":"__codeBehind_iwsdl1dl.xdd"
+}}
+,
+{
+"CompilerPlanEnd":"11\/12\/2018 1:39:39 PM"
+}{
+"CompilerPlanStart":"11\/12\/2018 1:40:35 PM"
+},
+{
+"Settings":"-c++ -mp -pdb Partial -OUTPUT_PATH C:\\Users\\Z003D4KS\\AppData\\Local\\USQLDataRoot -cosmosCluster localhost -apEnvironment Default -apCluster localhost -On ForceShadowCopy -On ADL -On USQL -Off SQLIPSQLProxy -Off SQLIPSQLProxyNative -SplitPartitionThreshold 52428800 -ClientVersion 10.2.2.0"
+},
+{
+"statementText":"\/\/ Auto-generated header codeCREATE ASSEMBLY [__codeBehind_e23q4jjq.ng1] FROM 0x4D5A900003000000"
+,
+{
+"NodeName":"CreateAssemblyStatement"
+},
+{
+"Name":"__codeBehind_e23q4jjq.ng1"
+}}
+,
+{
+"statementText":"REFERENCE ASSEMBLY [__codeBehind_e23q4jjq.ng1]"
+,
+{
+"NodeName":"ReferenceAssemblyStatement"
+},
+{
+"Name":"__codeBehind_e23q4jjq.ng1"
+}}
+,
+{
+"statementText":"DEPLOY RESOURCE @\"C:\\Users\\Z003D4KS\\AppData\\Local\\USQLDataRoot\\Assemblies\\Newtonsoft.Json.dll\""
+,
+{
+"NodeName":"ResourceStatement"
+}}
+,
+{
+"statementText":"\n\/\/ Auto-generated header code ended\/\/ User script\/\/ A. CREATE ASSEMBLY: Register assemblies"
+,
+{
+"NodeName":"CreateAssemblyStatement"
+},
+{
+"Name":"Newtonsoft.Json"
+},
+{
+"SourcePath":"C:\\Users\\Z003D4KS\\AppData\\Local\\USQLDataRoot\\Assemblies\/Newtonsoft.Json.dll"
+}}
+,
+{
+"statementText":"CREATE ASSEMBLY IF NOT EXISTS [Microsoft.Analytics.Samples.Formats] FROM @\"\/Assemblies\/Microsoft.A"
+,
+{
+"NodeName":"CreateAssemblyStatement"
+},
+{
+"Name":"Microsoft.Analytics.Samples.Formats"
+},
+{
+"SourcePath":"C:\\Users\\Z003D4KS\\AppData\\Local\\USQLDataRoot\\Assemblies\/Microsoft.Analytics.Samples.Formats.dll"
+}}
+,
+{
+"statementText":" \/\/ B. REFERENCE ASSEMBLY: Load assemblies for compile time and execution.REFERENCE ASSEMBLY ["
+,
+{
+"NodeName":"ReferenceAssemblyStatement"
+},
+{
+"Name":"Newtonsoft.Json"
+}}
+,
+{
+"statementText":"REFERENCE ASSEMBLY [Microsoft.Analytics.Samples.Formats]"
+,
+{
+"NodeName":"ReferenceAssemblyStatement"
+},
+{
+"Name":"Microsoft.Analytics.Samples.Formats"
+}}
+,
+{
+"statementText":"\/\/ C. USING: Specify namespace to shorten function names (e.g. Microsoft.Analytics.Samples.Forma"
+,
+{
+"NodeName":"UsingStatement"
+}}
+,
+{
+"statementText":"\/\/ 1. Initialise variables for Input (e.g. JSON) and Output (e.g. CSV).\/\/DECLARE @InputFile st"
+,
+{
+"NodeName":"DeclareVariableStatement"
+},
+{
+"Name":"@InputFile"
+}}
+,
+{
+"statementText":"DECLARE @output string = @\"\/TransformedBlobData\/OutputVatan\/transBlobOutput12.csv\""
+,
+{
+"NodeName":"DeclareVariableStatement"
+},
+{
+"Name":"@output"
+}}
+,
+{
+"statementText":"    EXTRACT vent String,            location String,            device String,            cu"
+,
+{
+"NodeName":"QueryStatement"
+}}
+,
+{
+"statementText":"    SELECT JsonFunctions.JsonTuple(vent).Values AS VentArray,           JsonFunctions.JsonTuple("
+,
+{
+"NodeName":"QueryStatement"
+}}
+,
+{
+"statementText":"    SELECT VentArray,           LocationData[\"country\"] ?? \"N\/A\" AS Country,           Locatio"
+,
+{
+"NodeName":"QueryStatement"
+}}
+,
+{
+"statementText":"    SELECT VentArray,           Country,           Province,           City,           OsV"
+,
+{
+"NodeName":"QueryStatement"
+}}
+,
+{
+"statementText":"    SELECT GovPostcodes.Utility.GetName(VentArray) AS Name,           Country,           Provi"
+,
+{
+"NodeName":"QueryStatement"
+}}
+,
+{
+"statementText":"OUTPUT @resultTO @outputUSING Outputters.Csv(outputHeader : true, quoting : true)"
+,
+{
+"NodeName":"OutputStatement"
+}}
+,
+{
+"statementText":"\/\/\/\/ 3. Write values to CSV\/\/OUTPUT @countryProvince\/\/TO @countryProvinceFile\/\/USING Outpu"
+,
+{
+"NodeName":"UseDatabaseStatement"
+},
+{
+"Name":"master"
+}}
+,
+{
+"statementText":"USE SCHEMA [dbo]"
+,
+{
+"NodeName":"UseSchemaStatement"
+},
+{
+"Name":"dbo"
+}}
+,
+{
+"statementText":"DROP ASSEMBLY [__codeBehind_e23q4jjq.ng1]"
+,
+{
+"NodeName":"DropAssemblyStatement"
+},
+{
+"Name":"__codeBehind_e23q4jjq.ng1"
+}}
+,
+{
+"CompilerPlanEnd":"11\/12\/2018 1:40:35 PM"
+}{
+"CompilerPlanStart":"11\/12\/2018 1:45:32 PM"
+},
+{
+"Settings":"-c++ -mp -pdb Partial -OUTPUT_PATH C:\\Users\\Z003D4KS\\AppData\\Local\\USQLDataRoot -cosmosCluster localhost -apEnvironment Default -apCluster localhost -On ForceShadowCopy -On ADL -On USQL -Off SQLIPSQLProxy -Off SQLIPSQLProxyNative -SplitPartitionThreshold 52428800 -ClientVersion 10.2.2.0"
+},
+{
+"statementText":"\/\/ Auto-generated header codeCREATE ASSEMBLY [__codeBehind_op5igmrg.4cq] FROM 0x4D5A900003000000"
+,
+{
+"NodeName":"CreateAssemblyStatement"
+},
+{
+"Name":"__codeBehind_op5igmrg.4cq"
+}}
+,
+{
+"statementText":"REFERENCE ASSEMBLY [__codeBehind_op5igmrg.4cq]"
+,
+{
+"NodeName":"ReferenceAssemblyStatement"
+},
+{
+"Name":"__codeBehind_op5igmrg.4cq"
+}}
+,
+{
+"statementText":"DEPLOY RESOURCE @\"C:\\Users\\Z003D4KS\\AppData\\Local\\USQLDataRoot\\Assemblies\\Newtonsoft.Json.dll\""
+,
+{
+"NodeName":"ResourceStatement"
+}}
+,
+{
+"statementText":"\n\/\/ Auto-generated header code ended\/\/ User script\/\/ A. CREATE ASSEMBLY: Register assemblies"
+,
+{
+"NodeName":"CreateAssemblyStatement"
+},
+{
+"Name":"Newtonsoft.Json"
+},
+{
+"SourcePath":"C:\\Users\\Z003D4KS\\AppData\\Local\\USQLDataRoot\\Assemblies\/Newtonsoft.Json.dll"
+}}
+,
+{
+"statementText":"CREATE ASSEMBLY IF NOT EXISTS [Microsoft.Analytics.Samples.Formats] FROM @\"\/Assemblies\/Microsoft.A"
+,
+{
+"NodeName":"CreateAssemblyStatement"
+},
+{
+"Name":"Microsoft.Analytics.Samples.Formats"
+},
+{
+"SourcePath":"C:\\Users\\Z003D4KS\\AppData\\Local\\USQLDataRoot\\Assemblies\/Microsoft.Analytics.Samples.Formats.dll"
+}}
+,
+{
+"statementText":" \/\/ B. REFERENCE ASSEMBLY: Load assemblies for compile time and execution.REFERENCE ASSEMBLY ["
+,
+{
+"NodeName":"ReferenceAssemblyStatement"
+},
+{
+"Name":"Newtonsoft.Json"
+}}
+,
+{
+"statementText":"REFERENCE ASSEMBLY [Microsoft.Analytics.Samples.Formats]"
+,
+{
+"NodeName":"ReferenceAssemblyStatement"
+},
+{
+"Name":"Microsoft.Analytics.Samples.Formats"
+}}
+,
+{
+"statementText":"\/\/ C. USING: Specify namespace to shorten function names (e.g. Microsoft.Analytics.Samples.Forma"
+,
+{
+"NodeName":"UsingStatement"
+}}
+,
+{
+"statementText":"\/\/ 1. Initialise variables for Input (e.g. JSON) and Output (e.g. CSV).\/\/DECLARE @InputFile st"
+,
+{
+"NodeName":"DeclareVariableStatement"
+},
+{
+"Name":"@InputFile"
+}}
+,
+{
+"statementText":"DECLARE @output string = @\"\/TransformedBlobData\/OutputVatan\/transBlobOutput12.csv\""
+,
+{
+"NodeName":"DeclareVariableStatement"
+},
+{
+"Name":"@output"
+}}
+,
+{
+"statementText":"    EXTRACT vent String,            location String,            device String,            cu"
+,
+{
+"NodeName":"QueryStatement"
+}}
+,
+{
+"statementText":"    SELECT JsonFunctions.JsonTuple(vent).Values AS VentArray,           JsonFunctions.JsonTuple("
+,
+{
+"NodeName":"QueryStatement"
+}}
+,
+{
+"statementText":"    SELECT VentArray,           LocationData[\"country\"] ?? \"N\/A\" AS Country,           Locatio"
+,
+{
+"NodeName":"QueryStatement"
+}}
+,
+{
+"statementText":"    SELECT VentArray,           Country,           Province,           City,           OsV"
+,
+{
+"NodeName":"QueryStatement"
+}}
+,
+{
+"statementText":"    SELECT GovPostcodes.Utility.GetName(VentArray) AS Name,           Country,           Provi"
+,
+{
+"NodeName":"QueryStatement"
+}}
+,
+{
+"statementText":"OUTPUT @resultTO @outputUSING Outputters.Csv(outputHeader : true, quoting : true)"
+,
+{
+"NodeName":"OutputStatement"
+}}
+,
+{
+"statementText":"\/\/\/\/ 3. Write values to CSV\/\/OUTPUT @countryProvince\/\/TO @countryProvinceFile\/\/USING Outpu"
+,
+{
+"NodeName":"UseDatabaseStatement"
+},
+{
+"Name":"master"
+}}
+,
+{
+"statementText":"USE SCHEMA [dbo]"
+,
+{
+"NodeName":"UseSchemaStatement"
+},
+{
+"Name":"dbo"
+}}
+,
+{
+"statementText":"DROP ASSEMBLY [__codeBehind_op5igmrg.4cq]"
+,
+{
+"NodeName":"DropAssemblyStatement"
+},
+{
+"Name":"__codeBehind_op5igmrg.4cq"
+}}
+,
+{
+"CompilerPlanEnd":"11\/12\/2018 1:45:32 PM"
+}{
+"CompilerPlanStart":"11\/12\/2018 1:48:11 PM"
+},
+{
+"Settings":"-c++ -mp -pdb Partial -OUTPUT_PATH C:\\Users\\Z003D4KS\\AppData\\Local\\USQLDataRoot -cosmosCluster localhost -apEnvironment Default -apCluster localhost -On ForceShadowCopy -On ADL -On USQL -Off SQLIPSQLProxy -Off SQLIPSQLProxyNative -SplitPartitionThreshold 52428800 -ClientVersion 10.2.2.0"
+},
+{
+"statementText":"\/\/ Auto-generated header codeCREATE ASSEMBLY [__codeBehind_0kkry1vw.zzf] FROM 0x4D5A900003000000"
+,
+{
+"NodeName":"CreateAssemblyStatement"
+},
+{
+"Name":"__codeBehind_0kkry1vw.zzf"
+}}
+,
+{
+"statementText":"REFERENCE ASSEMBLY [__codeBehind_0kkry1vw.zzf]"
+,
+{
+"NodeName":"ReferenceAssemblyStatement"
+},
+{
+"Name":"__codeBehind_0kkry1vw.zzf"
+}}
+,
+{
+"statementText":"DEPLOY RESOURCE @\"D:\\Vatan\\Learnings\\DataLake\\RahulDataLake\\RahulDataLake\\GovPostcodes\\GovPost"
+,
+{
+"NodeName":"ResourceStatement"
+}}
+,
+{
+"statementText":"\n\/\/ Auto-generated header code ended\/\/ User script\/\/ A. CREATE ASSEMBLY: Register assemblies"
+,
+{
+"NodeName":"CreateAssemblyStatement"
+},
+{
+"Name":"Newtonsoft.Json"
+},
+{
+"SourcePath":"C:\\Users\\Z003D4KS\\AppData\\Local\\USQLDataRoot\\Assemblies\/Newtonsoft.Json.dll"
+}}
+,
+{
+"statementText":"CREATE ASSEMBLY IF NOT EXISTS [Microsoft.Analytics.Samples.Formats] FROM @\"\/Assemblies\/Microsoft.A"
+,
+{
+"NodeName":"CreateAssemblyStatement"
+},
+{
+"Name":"Microsoft.Analytics.Samples.Formats"
+},
+{
+"SourcePath":"C:\\Users\\Z003D4KS\\AppData\\Local\\USQLDataRoot\\Assemblies\/Microsoft.Analytics.Samples.Formats.dll"
+}}
+,
+{
+"statementText":" \/\/ B. REFERENCE ASSEMBLY: Load assemblies for compile time and execution.REFERENCE ASSEMBLY ["
+,
+{
+"NodeName":"ReferenceAssemblyStatement"
+},
+{
+"Name":"Newtonsoft.Json"
+}}
+,
+{
+"statementText":"REFERENCE ASSEMBLY [Microsoft.Analytics.Samples.Formats]"
+,
+{
+"NodeName":"ReferenceAssemblyStatement"
+},
+{
+"Name":"Microsoft.Analytics.Samples.Formats"
+}}
+,
+{
+"statementText":"\/\/ C. USING: Specify namespace to shorten function names (e.g. Microsoft.Analytics.Samples.Forma"
+,
+{
+"NodeName":"UsingStatement"
+}}
+,
+{
+"statementText":"\/\/ 1. Initialise variables for Input (e.g. JSON) and Output (e.g. CSV).\/\/DECLARE @InputFile st"
+,
+{
+"NodeName":"DeclareVariableStatement"
+},
+{
+"Name":"@InputFile"
+}}
+,
+{
+"statementText":"DECLARE @output string = @\"\/TransformedBlobData\/OutputVatan\/transBlobOutput12.csv\""
+,
+{
+"NodeName":"DeclareVariableStatement"
+},
+{
+"Name":"@output"
+}}
+,
+{
+"statementText":"    EXTRACT vent String,            location String,            device String,            cu"
+,
+{
+"NodeName":"QueryStatement"
+}}
+,
+{
+"statementText":"    SELECT JsonFunctions.JsonTuple(vent).Values AS VentArray,           JsonFunctions.JsonTuple("
+,
+{
+"NodeName":"QueryStatement"
+}}
+,
+{
+"statementText":"    SELECT VentArray,           LocationData[\"country\"] ?? \"N\/A\" AS Country,           Locatio"
+,
+{
+"NodeName":"QueryStatement"
+}}
+,
+{
+"statementText":"    SELECT VentArray,           Country,           Province,           City,           OsV"
+,
+{
+"NodeName":"QueryStatement"
+}}
+,
+{
+"statementText":"    SELECT GovPostcodes.Utility.GetName(VentArray) AS Name,           Country,           Provi"
+,
+{
+"NodeName":"QueryStatement"
+}}
+,
+{
+"statementText":"OUTPUT @resultTO @outputUSING Outputters.Csv(outputHeader : true, quoting : true)"
+,
+{
+"NodeName":"OutputStatement"
+}}
+,
+{
+"statementText":"\/\/\/\/ 3. Write values to CSV\/\/OUTPUT @countryProvince\/\/TO @countryProvinceFile\/\/USING Outpu"
+,
+{
+"NodeName":"UseDatabaseStatement"
+},
+{
+"Name":"master"
+}}
+,
+{
+"statementText":"USE SCHEMA [dbo]"
+,
+{
+"NodeName":"UseSchemaStatement"
+},
+{
+"Name":"dbo"
+}}
+,
+{
+"statementText":"DROP ASSEMBLY [__codeBehind_0kkry1vw.zzf]"
+,
+{
+"NodeName":"DropAssemblyStatement"
+},
+{
+"Name":"__codeBehind_0kkry1vw.zzf"
+}}
+,
+{
+"CompilerPlanEnd":"11\/12\/2018 1:48:11 PM"
+}{
+"CompilerPlanStart":"11\/12\/2018 1:48:54 PM"
+},
+{
+"Settings":"-c++ -mp -pdb Partial -OUTPUT_PATH C:\\Users\\Z003D4KS\\AppData\\Local\\USQLDataRoot -cosmosCluster localhost -apEnvironment Default -apCluster localhost -On ForceShadowCopy -On ADL -On USQL -Off SQLIPSQLProxy -Off SQLIPSQLProxyNative -SplitPartitionThreshold 52428800 -ClientVersion 10.2.2.0"
+},
+{
+"statementText":"\/\/ Auto-generated header codeCREATE ASSEMBLY [__codeBehind_f5gzohk0.p2h] FROM 0x4D5A900003000000"
+,
+{
+"NodeName":"CreateAssemblyStatement"
+},
+{
+"Name":"__codeBehind_f5gzohk0.p2h"
+}}
+,
+{
+"statementText":"REFERENCE ASSEMBLY [__codeBehind_f5gzohk0.p2h]"
+,
+{
+"NodeName":"ReferenceAssemblyStatement"
+},
+{
+"Name":"__codeBehind_f5gzohk0.p2h"
+}}
+,
+{
+"statementText":"DEPLOY RESOURCE @\"D:\\Vatan\\Learnings\\DataLake\\RahulDataLake\\RahulDataLake\\GovPostcodes\\GovPost"
+,
+{
+"NodeName":"ResourceStatement"
+}}
+,
+{
+"statementText":"\n\/\/ Auto-generated header code ended\/\/ User script\/\/ A. CREATE ASSEMBLY: Register assemblies"
+,
+{
+"NodeName":"CreateAssemblyStatement"
+},
+{
+"Name":"Newtonsoft.Json"
+},
+{
+"SourcePath":"C:\\Users\\Z003D4KS\\AppData\\Local\\USQLDataRoot\\Assemblies\/Newtonsoft.Json.dll"
+}}
+,
+{
+"statementText":"CREATE ASSEMBLY IF NOT EXISTS [Microsoft.Analytics.Samples.Formats] FROM @\"\/Assemblies\/Microsoft.A"
+,
+{
+"NodeName":"CreateAssemblyStatement"
+},
+{
+"Name":"Microsoft.Analytics.Samples.Formats"
+},
+{
+"SourcePath":"C:\\Users\\Z003D4KS\\AppData\\Local\\USQLDataRoot\\Assemblies\/Microsoft.Analytics.Samples.Formats.dll"
+}}
+,
+{
+"statementText":" \/\/ B. REFERENCE ASSEMBLY: Load assemblies for compile time and execution.REFERENCE ASSEMBLY ["
+,
+{
+"NodeName":"ReferenceAssemblyStatement"
+},
+{
+"Name":"Newtonsoft.Json"
+}}
+,
+{
+"statementText":"REFERENCE ASSEMBLY [Microsoft.Analytics.Samples.Formats]"
+,
+{
+"NodeName":"ReferenceAssemblyStatement"
+},
+{
+"Name":"Microsoft.Analytics.Samples.Formats"
+}}
+,
+{
+"statementText":"\/\/ C. USING: Specify namespace to shorten function names (e.g. Microsoft.Analytics.Samples.Forma"
+,
+{
+"NodeName":"UsingStatement"
+}}
+,
+{
+"statementText":"\/\/ 1. Initialise variables for Input (e.g. JSON) and Output (e.g. CSV).\/\/DECLARE @InputFile st"
+,
+{
+"NodeName":"DeclareVariableStatement"
+},
+{
+"Name":"@InputFile"
+}}
+,
+{
+"statementText":"DECLARE @output string = @\"\/TransformedBlobData\/OutputVatan\/transBlobOutput12.csv\""
+,
+{
+"NodeName":"DeclareVariableStatement"
+},
+{
+"Name":"@output"
+}}
+,
+{
+"statementText":"    EXTRACT vent String,            location String,            device String,            cu"
+,
+{
+"NodeName":"QueryStatement"
+}}
+,
+{
+"statementText":"    SELECT JsonFunctions.JsonTuple(vent).Values AS VentArray,           JsonFunctions.JsonTuple("
+,
+{
+"NodeName":"QueryStatement"
+}}
+,
+{
+"statementText":"    SELECT VentArray,           LocationData[\"country\"] ?? \"N\/A\" AS Country,           Locatio"
+,
+{
+"NodeName":"QueryStatement"
+}}
+,
+{
+"statementText":"    SELECT VentArray,           Country,           Province,           City,           OsV"
+,
+{
+"NodeName":"QueryStatement"
+}}
+,
+{
+"statementText":"    SELECT GovPostcodes.Utility.GetName(VentArray) AS Name,           Country,           Provi"
+,
+{
+"NodeName":"QueryStatement"
+}}
+,
+{
+"statementText":"OUTPUT @resultTO @outputUSING Outputters.Csv(outputHeader : true, quoting : true)"
+,
+{
+"NodeName":"OutputStatement"
+}}
+,
+{
+"statementText":"\/\/\/\/ 3. Write values to CSV\/\/OUTPUT @countryProvince\/\/TO @countryProvinceFile\/\/USING Outpu"
+,
+{
+"NodeName":"UseDatabaseStatement"
+},
+{
+"Name":"master"
+}}
+,
+{
+"statementText":"USE SCHEMA [dbo]"
+,
+{
+"NodeName":"UseSchemaStatement"
+},
+{
+"Name":"dbo"
+}}
+,
+{
+"statementText":"DROP ASSEMBLY [__codeBehind_f5gzohk0.p2h]"
+,
+{
+"NodeName":"DropAssemblyStatement"
+},
+{
+"Name":"__codeBehind_f5gzohk0.p2h"
+}}
+,
+{
+"CompilerPlanEnd":"11\/12\/2018 1:48:54 PM"
+}{
+"CompilerPlanStart":"11\/12\/2018 1:50:04 PM"
+},
+{
+"Settings":"-c++ -mp -pdb Partial -OUTPUT_PATH C:\\Users\\Z003D4KS\\AppData\\Local\\USQLDataRoot -cosmosCluster localhost -apEnvironment Default -apCluster localhost -On ForceShadowCopy -On ADL -On USQL -Off SQLIPSQLProxy -Off SQLIPSQLProxyNative -SplitPartitionThreshold 52428800 -ClientVersion 10.2.2.0"
+},
+{
+"statementText":"\/\/ Auto-generated header codeCREATE ASSEMBLY [__codeBehind_wt0rl3hr.avp] FROM 0x4D5A900003000000"
+,
+{
+"NodeName":"CreateAssemblyStatement"
+},
+{
+"Name":"__codeBehind_wt0rl3hr.avp"
+}}
+,
+{
+"statementText":"REFERENCE ASSEMBLY [__codeBehind_wt0rl3hr.avp]"
+,
+{
+"NodeName":"ReferenceAssemblyStatement"
+},
+{
+"Name":"__codeBehind_wt0rl3hr.avp"
+}}
+,
+{
+"statementText":"DEPLOY RESOURCE @\"D:\\Vatan\\Learnings\\DataLake\\RahulDataLake\\RahulDataLake\\GovPostcodes\\GovPost"
+,
+{
+"NodeName":"ResourceStatement"
+}}
+,
+{
+"statementText":"\n\/\/ Auto-generated header code ended\/\/ User script\/\/ A. CREATE ASSEMBLY: Register assemblies"
+,
+{
+"NodeName":"CreateAssemblyStatement"
+},
+{
+"Name":"Newtonsoft.Json"
+},
+{
+"SourcePath":"C:\\Users\\Z003D4KS\\AppData\\Local\\USQLDataRoot\\Assemblies\/Newtonsoft.Json.dll"
+}}
+,
+{
+"statementText":"CREATE ASSEMBLY IF NOT EXISTS [Microsoft.Analytics.Samples.Formats] FROM @\"\/Assemblies\/Microsoft.A"
+,
+{
+"NodeName":"CreateAssemblyStatement"
+},
+{
+"Name":"Microsoft.Analytics.Samples.Formats"
+},
+{
+"SourcePath":"C:\\Users\\Z003D4KS\\AppData\\Local\\USQLDataRoot\\Assemblies\/Microsoft.Analytics.Samples.Formats.dll"
+}}
+,
+{
+"statementText":" \/\/ B. REFERENCE ASSEMBLY: Load assemblies for compile time and execution.REFERENCE ASSEMBLY ["
+,
+{
+"NodeName":"ReferenceAssemblyStatement"
+},
+{
+"Name":"Newtonsoft.Json"
+}}
+,
+{
+"statementText":"REFERENCE ASSEMBLY [Microsoft.Analytics.Samples.Formats]"
+,
+{
+"NodeName":"ReferenceAssemblyStatement"
+},
+{
+"Name":"Microsoft.Analytics.Samples.Formats"
+}}
+,
+{
+"statementText":"\/\/ C. USING: Specify namespace to shorten function names (e.g. Microsoft.Analytics.Samples.Forma"
+,
+{
+"NodeName":"UsingStatement"
+}}
+,
+{
+"statementText":"\/\/ 1. Initialise variables for Input (e.g. JSON) and Output (e.g. CSV).\/\/DECLARE @InputFile st"
+,
+{
+"NodeName":"DeclareVariableStatement"
+},
+{
+"Name":"@InputFile"
+}}
+,
+{
+"statementText":"DECLARE @output string = @\"\/TransformedBlobData\/OutputVatan\/transBlobOutput12.csv\""
+,
+{
+"NodeName":"DeclareVariableStatement"
+},
+{
+"Name":"@output"
+}}
+,
+{
+"statementText":"    EXTRACT vent String,            location String,            device String,            cu"
+,
+{
+"NodeName":"QueryStatement"
+}}
+,
+{
+"statementText":"    SELECT JsonFunctions.JsonTuple(vent).Values AS VentArray,           JsonFunctions.JsonTuple("
+,
+{
+"NodeName":"QueryStatement"
+}}
+,
+{
+"statementText":"    SELECT VentArray,           LocationData[\"country\"] ?? \"N\/A\" AS Country,           Locatio"
+,
+{
+"NodeName":"QueryStatement"
+}}
+,
+{
+"statementText":"    SELECT VentArray,           Country,           Province,           City,           OsV"
+,
+{
+"NodeName":"QueryStatement"
+}}
+,
+{
+"statementText":"    SELECT GovPostcodes.Utility.GetName(VentArray) AS Name,           Country,           Provi"
+,
+{
+"NodeName":"QueryStatement"
+}}
+,
+{
+"statementText":"OUTPUT @resultTO @outputUSING Outputters.Csv(outputHeader : true, quoting : true)"
+,
+{
+"NodeName":"OutputStatement"
+}}
+,
+{
+"statementText":"\/\/\/\/ 3. Write values to CSV\/\/OUTPUT @countryProvince\/\/TO @countryProvinceFile\/\/USING Outpu"
+,
+{
+"NodeName":"UseDatabaseStatement"
+},
+{
+"Name":"master"
+}}
+,
+{
+"statementText":"USE SCHEMA [dbo]"
+,
+{
+"NodeName":"UseSchemaStatement"
+},
+{
+"Name":"dbo"
+}}
+,
+{
+"statementText":"DROP ASSEMBLY [__codeBehind_wt0rl3hr.avp]"
+,
+{
+"NodeName":"DropAssemblyStatement"
+},
+{
+"Name":"__codeBehind_wt0rl3hr.avp"
+}}
+,
+{
+"CompilerPlanEnd":"11\/12\/2018 1:50:04 PM"
+}{
+"CompilerPlanStart":"11\/12\/2018 1:54:43 PM"
+},
+{
+"Settings":"-c++ -mp -pdb Partial -OUTPUT_PATH C:\\Users\\Z003D4KS\\AppData\\Local\\USQLDataRoot -cosmosCluster localhost -apEnvironment Default -apCluster localhost -On ForceShadowCopy -On ADL -On USQL -Off SQLIPSQLProxy -Off SQLIPSQLProxyNative -SplitPartitionThreshold 52428800 -ClientVersion 10.2.2.0"
+},
+{
+"statementText":"\/\/ Auto-generated header codeCREATE ASSEMBLY [__codeBehind_rxm2ppsj.1pu] FROM 0x4D5A900003000000"
+,
+{
+"NodeName":"CreateAssemblyStatement"
+},
+{
+"Name":"__codeBehind_rxm2ppsj.1pu"
+}}
+,
+{
+"statementText":"REFERENCE ASSEMBLY [__codeBehind_rxm2ppsj.1pu]"
+,
+{
+"NodeName":"ReferenceAssemblyStatement"
+},
+{
+"Name":"__codeBehind_rxm2ppsj.1pu"
+}}
+,
+{
+"statementText":"DEPLOY RESOURCE @\"D:\\Vatan\\Learnings\\DataLake\\RahulDataLake\\RahulDataLake\\GovPostcodes\\GovPost"
+,
+{
+"NodeName":"ResourceStatement"
+}}
+,
+{
+"statementText":"\n\/\/ Auto-generated header code ended\/\/ User script\/\/ A. CREATE ASSEMBLY: Register assemblies"
+,
+{
+"NodeName":"CreateAssemblyStatement"
+},
+{
+"Name":"Newtonsoft.Json"
+},
+{
+"SourcePath":"C:\\Users\\Z003D4KS\\AppData\\Local\\USQLDataRoot\\Assemblies\/Newtonsoft.Json.dll"
+}}
+,
+{
+"statementText":"CREATE ASSEMBLY IF NOT EXISTS [Microsoft.Analytics.Samples.Formats] FROM @\"\/Assemblies\/Microsoft.A"
+,
+{
+"NodeName":"CreateAssemblyStatement"
+},
+{
+"Name":"Microsoft.Analytics.Samples.Formats"
+},
+{
+"SourcePath":"C:\\Users\\Z003D4KS\\AppData\\Local\\USQLDataRoot\\Assemblies\/Microsoft.Analytics.Samples.Formats.dll"
+}}
+,
+{
+"statementText":" \/\/ B. REFERENCE ASSEMBLY: Load assemblies for compile time and execution.REFERENCE ASSEMBLY ["
+,
+{
+"NodeName":"ReferenceAssemblyStatement"
+},
+{
+"Name":"Newtonsoft.Json"
+}}
+,
+{
+"statementText":"REFERENCE ASSEMBLY [Microsoft.Analytics.Samples.Formats]"
+,
+{
+"NodeName":"ReferenceAssemblyStatement"
+},
+{
+"Name":"Microsoft.Analytics.Samples.Formats"
+}}
+,
+{
+"statementText":"\/\/ C. USING: Specify namespace to shorten function names (e.g. Microsoft.Analytics.Samples.Forma"
+,
+{
+"NodeName":"UsingStatement"
+}}
+,
+{
+"statementText":"\/\/ 1. Initialise variables for Input (e.g. JSON) and Output (e.g. CSV).\/\/DECLARE @InputFile st"
+,
+{
+"NodeName":"DeclareVariableStatement"
+},
+{
+"Name":"@InputFile"
+}}
+,
+{
+"statementText":"DECLARE @output string = @\"\/TransformedBlobData\/OutputVatan\/transBlobOutput12.csv\""
+,
+{
+"NodeName":"DeclareVariableStatement"
+},
+{
+"Name":"@output"
+}}
+,
+{
+"statementText":"    EXTRACT vent String,            location String,            device String,            cu"
+,
+{
+"NodeName":"QueryStatement"
+}}
+,
+{
+"statementText":"    SELECT JsonFunctions.JsonTuple(vent).Values AS VentArray,           JsonFunctions.JsonTuple("
+,
+{
+"NodeName":"QueryStatement"
+}}
+,
+{
+"statementText":"    SELECT VentArray,           LocationData[\"country\"] ?? \"N\/A\" AS Country,           Locatio"
+,
+{
+"NodeName":"QueryStatement"
+}}
+,
+{
+"statementText":"    SELECT VentArray,           Country,           Province,           City,           OsV"
+,
+{
+"NodeName":"QueryStatement"
+}}
+,
+{
+"statementText":"    SELECT GovPostcodes.Utility.GetName(VentArray) AS Name,           Country,           Provi"
+,
+{
+"NodeName":"QueryStatement"
+}}
+,
+{
+"statementText":"OUTPUT @resultTO @outputUSING Outputters.Csv(outputHeader : true, quoting : true)"
+,
+{
+"NodeName":"OutputStatement"
+}}
+,
+{
+"statementText":"\/\/\/\/ 3. Write values to CSV\/\/OUTPUT @countryProvince\/\/TO @countryProvinceFile\/\/USING Outpu"
+,
+{
+"NodeName":"UseDatabaseStatement"
+},
+{
+"Name":"master"
+}}
+,
+{
+"statementText":"USE SCHEMA [dbo]"
+,
+{
+"NodeName":"UseSchemaStatement"
+},
+{
+"Name":"dbo"
+}}
+,
+{
+"statementText":"DROP ASSEMBLY [__codeBehind_rxm2ppsj.1pu]"
+,
+{
+"NodeName":"DropAssemblyStatement"
+},
+{
+"Name":"__codeBehind_rxm2ppsj.1pu"
+}}
+,
+{
+"CompilerPlanEnd":"11\/12\/2018 1:54:43 PM"
+}{
+"CompilerPlanStart":"11\/12\/2018 2:46:33 PM"
+},
+{
+"Settings":"-c++ -mp -pdb Partial -OUTPUT_PATH C:\\Users\\Z003D4KS\\AppData\\Local\\USQLDataRoot -cosmosCluster localhost -apEnvironment Default -apCluster localhost -On ForceShadowCopy -On ADL -On USQL -Off SQLIPSQLProxy -Off SQLIPSQLProxyNative -SplitPartitionThreshold 52428800 -ClientVersion 10.2.2.0"
+},
+{
+"statementText":"\/\/ Auto-generated header codeCREATE ASSEMBLY [__codeBehind_dbh0vjkl.0yh] FROM 0x4D5A900003000000"
+,
+{
+"NodeName":"CreateAssemblyStatement"
+},
+{
+"Name":"__codeBehind_dbh0vjkl.0yh"
+}}
+,
+{
+"statementText":"REFERENCE ASSEMBLY [__codeBehind_dbh0vjkl.0yh]"
+,
+{
+"NodeName":"ReferenceAssemblyStatement"
+},
+{
+"Name":"__codeBehind_dbh0vjkl.0yh"
+}}
+,
+{
+"statementText":"DEPLOY RESOURCE @\"D:\\Vatan\\Learnings\\DataLake\\RahulDataLake\\RahulDataLake\\GovPostcodes\\GovPost"
+,
+{
+"NodeName":"ResourceStatement"
+}}
+,
+{
+"statementText":"\n\/\/ Auto-generated header code ended\/\/ User script\/\/ A. CREATE ASSEMBLY: Register assemblies"
+,
+{
+"NodeName":"CreateAssemblyStatement"
+},
+{
+"Name":"Newtonsoft.Json"
+},
+{
+"SourcePath":"C:\\Users\\Z003D4KS\\AppData\\Local\\USQLDataRoot\\Assemblies\/Newtonsoft.Json.dll"
+}}
+,
+{
+"statementText":"CREATE ASSEMBLY IF NOT EXISTS [Microsoft.Analytics.Samples.Formats] FROM @\"\/Assemblies\/Microsoft.A"
+,
+{
+"NodeName":"CreateAssemblyStatement"
+},
+{
+"Name":"Microsoft.Analytics.Samples.Formats"
+},
+{
+"SourcePath":"C:\\Users\\Z003D4KS\\AppData\\Local\\USQLDataRoot\\Assemblies\/Microsoft.Analytics.Samples.Formats.dll"
+}}
+,
+{
+"statementText":" \/\/ B. REFERENCE ASSEMBLY: Load assemblies for compile time and execution.REFERENCE ASSEMBLY ["
+,
+{
+"NodeName":"ReferenceAssemblyStatement"
+},
+{
+"Name":"Newtonsoft.Json"
+}}
+,
+{
+"statementText":"REFERENCE ASSEMBLY [Microsoft.Analytics.Samples.Formats]"
+,
+{
+"NodeName":"ReferenceAssemblyStatement"
+},
+{
+"Name":"Microsoft.Analytics.Samples.Formats"
+}}
+,
+{
+"statementText":"\/\/ C. USING: Specify namespace to shorten function names (e.g. Microsoft.Analytics.Samples.Forma"
+,
+{
+"NodeName":"UsingStatement"
+}}
+,
+{
+"statementText":"\/\/ 1. Initialise variables for Input (e.g. JSON) and Output (e.g. CSV).\/\/DECLARE @InputFile st"
+,
+{
+"NodeName":"DeclareVariableStatement"
+},
+{
+"Name":"@InputFile"
+}}
+,
+{
+"statementText":"DECLARE @output string = @\"\/TransformedBlobData\/OutputVatan\/transBlobOutput12.csv\""
+,
+{
+"NodeName":"DeclareVariableStatement"
+},
+{
+"Name":"@output"
+}}
+,
+{
+"statementText":"    EXTRACT [event] String,            location String,            device String,           "
+,
+{
+"NodeName":"QueryStatement"
+}}
+,
+{
+"statementText":"    SELECT JsonFunctions.JsonTuple([event]).Values AS VentArray,           JsonFunctions.JsonTup"
+,
+{
+"NodeName":"QueryStatement"
+}}
+,
+{
+"statementText":"    SELECT VentArray,           LocationData[\"country\"] ?? \"N\/A\" AS Country,           Locatio"
+,
+{
+"NodeName":"QueryStatement"
+}}
+,
+{
+"statementText":"    SELECT VentArray,           Country,           Province,           City,           OsV"
+,
+{
+"NodeName":"QueryStatement"
+}}
+,
+{
+"statementText":"    SELECT GovPostcodes.Utility.GetName(VentArray) AS Name,           Country,           Provi"
+,
+{
+"NodeName":"QueryStatement"
+}}
+,
+{
+"statementText":"OUTPUT @resultTO @outputUSING Outputters.Csv(outputHeader : true, quoting : true)"
+,
+{
+"NodeName":"OutputStatement"
+}}
+,
+{
+"statementText":"\/\/\/\/ 3. Write values to CSV\/\/OUTPUT @countryProvince\/\/TO @countryProvinceFile\/\/USING Outpu"
+,
+{
+"NodeName":"UseDatabaseStatement"
+},
+{
+"Name":"master"
+}}
+,
+{
+"statementText":"USE SCHEMA [dbo]"
+,
+{
+"NodeName":"UseSchemaStatement"
+},
+{
+"Name":"dbo"
+}}
+,
+{
+"statementText":"DROP ASSEMBLY [__codeBehind_dbh0vjkl.0yh]"
+,
+{
+"NodeName":"DropAssemblyStatement"
+},
+{
+"Name":"__codeBehind_dbh0vjkl.0yh"
+}}
+,
+{
+"CompilerPlanEnd":"11\/12\/2018 2:46:33 PM"
 }

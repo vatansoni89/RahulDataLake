@@ -143,6 +143,12 @@
       <LocalComputeAccount>DataLakeLocalCA:localcomputeaccount</LocalComputeAccount>
       <LocalDatabase>master</LocalDatabase>
       <LocalSchema>dbo</LocalSchema>
+      <ClusterComputeAccount>DataLakeCA:govbiv (vatansoni007@hotmail.com)</ClusterComputeAccount>
+      <ClusterDatabase>master</ClusterDatabase>
+      <ClusterSchema>dbo</ClusterSchema>
+      <RecurrenceName>SqlChickTransBlob1Local_ADLVSTool</RecurrenceName>
+      <RecurrenceId>91c74691-4770-4a57-913e-76a046c6c933</RecurrenceId>
+      <Parallelism>5</Parallelism>
     </ScriptUserData>
   </ItemGroup>
 </Project>
